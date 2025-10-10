@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Профиль пользователя — Креативная киска</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header class="main-header">
+      <nav class="main-navigation">
+        <a href="index.html"><img src="logo.png" alt="Наш логотип"></a>
+        <ul>
+          <li class="menu-user"><a href="user.html" class="active">Пользователь</a></li>
+          <li class="menu-basket"><a href="basket.html">В корзину</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <h1 class="main-title">Ваш профиль</h1>
+      <p class="main-description">
+        Добро пожаловать, <strong>Мяустр</strong>!  
+        Здесь вы можете погладить данные своего аккаунта и узнать, сколько кисок уже мурчит у вас дома.
+      </p>
+
+      <section class="user-info">
+        <h2 class="visually-hidden">Личная информация</h2>
+        <form class="user-form" action="#" method="post">
+          <div class="form-field">
+            <label for="user-name">Имя</label>
+            <input type="text" id="user-name" name="userName" value="Мяустр" required>
+          </div>
+
+          <div class="form-field">
+            <label for="user-email">E-mail</label>
+            <input type="email" id="user-email" name="userEmail" value="meow@example.com" required>
+          </div>
+
+          <div class="form-field">
+            <label for="user-phone">Телефон</label>
+            <input type="tel" id="user-phone" name="userPhone" value="+7 (900) 123-45-67">
+          </div>
+
+          <div class="form-field">
+            <label for="user-address">Адрес доставки</label>
+            <textarea id="user-address" name="userAddress" rows="3" placeholder="Куда доставлять мурку?"></textarea>
+          </div>
+
+          <div class="user-actions">
+            <button type="submit" class="btn-save">Сохранить изменения</button>
+            <button type="button" class="btn-logout">Выйти</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="user-orders">
+        <h2>Ваши киски</h2>
+        <p>История заказов — пушистая летопись ваших предпочтений.</p>
+
+        <ul class="order-list">
+          <li class="order-item">
+            <img src="cats/custom-cat1.svg" alt="Мурчелло">
+            <div>
+              <p><strong>Мурчелло</strong> — гордый и преданный.</p>
+              <p><small>Заказ от 15.09.2025 — Статус: доставлен</small></p>
+            </div>
+          </li>
+
+          <li class="order-item">
+            <img src="cats/custom-cat2.svg" alt="Пушинка">
+            <div>
+              <p><strong>Пушинка</strong> — белоснежное воплощение мягкости.</p>
+              <p><small>Заказ от 25.09.2025 — Статус: в пути</small></p>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <div class="footer-inner">
+        <p>&copy; 2025 Котозавод «Креативная киска»</p>
+        <p class="footer-tagline">
+          Мы не просто создаём котов — мы выпускаем в мир пушистые катастрофы с душой.
+        </p>
+        <ul class="footer-socials">
+          <li>
+            <a href="https://t.me/yourcatfactory" target="_blank" rel="noopener noreferrer">
+              <img src="icons/telegram.svg" alt="Telegram">
+            </a>
+          </li>
+          <li>
+            <a href="https://vk.com/yourcatfactory" target="_blank" rel="noopener noreferrer">
+              <img src="icons/vk.svg" alt="ВКонтакте">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
