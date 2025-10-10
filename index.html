@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Котозавод «Креативная киска»</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header class="main-header">
+      <nav class="main-navigation">
+        <a href="#"><img src="logo.png" alt="Логотип компании"></a>
+        <ul>
+          <li class="menu-user"><a href="user.html">Профиль</a></li>
+          <li class="menu-basket"><a href="basket.html">Корзина</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <h1 class="main-title">Котозавод «Креативная киска»</h1>
+	  <p class="main-description">
+	    Мы создаём котиков с характером. Слишком послушных у нас не бывает —
+	    только те, кто мурчит, когтит и делает, что хочет (иногда вместе с вами).
+	  </p>
+
+      <section class="jobs">
+        <h2 class="jobs-title">Наши звёзды</h2>
+
+	  <article class="pussycat-card">
+		<h3 class="pussycat-name">Пушок</h3>
+		<img class="pussycat-image" src="pushok.jpeg" alt="Белый пушистый кот-аристократ">
+		<p class="pussycat-description">
+          Пушок — воплощение благородства и лени. Умеет смотреть так, будто вы —
+          его персонал, и, честно говоря, вы им и являетесь.
+		</p>
+	</article>
+
+  <article class="pussycat-card">
+    <h3 class="pussycat-name">Молния</h3>
+    <img class="pussycat-image" src="molnia.jpeg" alt="Полосатая короткошёрстная кошка с энергичным видом">
+    <p class="pussycat-description">
+      Молния живёт на скорости звука. Её можно лишь догонять — или смириться
+      и аплодировать стоя, пока она гоняет тапки по квартире.
+    </p>
+  </article>
+
+  <article class="pussycat-card">
+    <h3 class="pussycat-name">Лапочка</h3>
+    <img class="pussycat-image" src="lapochka.jpeg" alt="Рыжая кошка с чёрными лапками">
+    <p class="pussycat-description">
+      С виду ангел, на деле — генерал сна и диванных операций. 
+      Никто не умеет так грациозно игнорировать приказы, как она.
+    </p>
+  </article>
+      </section>
+
+      <section class="reviews">
+        <h2 class="reviews-title">Отзывы счастливых подданных</h2>
+        <button class="arrow-left" aria-label="Предыдущий отзыв">←</button>
+
+        <article class="review-card">
+		  <h3 class="visually-hidden">Отзыв Бобби</h3>
+		  <img class="review-image" src="bobby-pussycat.jpeg" alt="Персиковая кошка Бобби">
+		  <blockquote class="review-block">
+			<cite class="review-name">Бобби С.</cite>
+			<q class="review-quote">
+			  Собрал котика по инструкции — а он всё равно считает, что я живу у него.
+			</q>
+		  </blockquote>
+		</article>
+
+        <article class="review-card">
+		  <h3 class="visually-hidden">Отзыв Светланы</h3>
+		  <img class="review-image" src="svetlana-cat.jpeg" alt="Миниатюрный сфинкс">
+		  <blockquote class="review-block">
+			<cite class="review-name">Светлана П.</cite>
+			<q class="review-quote">
+			  Мой сфинкс — чистое тепло и взгляд философа. Иногда кажется, что он
+			  знает о мире больше, чем я о Wi-Fi.
+			</q>
+		  </blockquote>
+		</article>
+
+        <article class="review-card">
+		  <h3 class="visually-hidden">Отзыв Станислава</h3>
+		  <img class="review-image" src="stanislav-cat.jpeg" alt="Пушистый персидский кот">
+		  <blockquote class="review-block">
+			<cite class="review-name">Станислав В.</cite>
+			<q class="review-quote">
+			  Перс оказался характерным. Сначала пытался меня воспитывать,
+			  потом понял — поздно. Теперь мы вместе воспитываем холодильник.
+			</q>
+		  </blockquote>
+		</article>
+
+        <button class="arrow-right" aria-label="Следующий отзыв">→</button>
+      </section>
+
+      <section class="constructor" aria-labelledby="constructor-title">
+        <h2 id="constructor-title" class="constructor-title">Собери своего котика!</h2>
+		<p class="constructor-intro">
+		  Настрой уши, хвост и уровень наглости. Создай питомца, который будет мурчать,
+		  когтить и смотреть на тебя свысока — как и положено звезде семьи.
+		</p>
+
+        <div class="constructor-body">
+          <figure class="constructor-preview">
+            <svg class="constructor-cat" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <circle id="body" cx="100" cy="120" r="50" fill="#f5cba7" />
+              <circle id="head" cx="100" cy="60" r="35" fill="#f5cba7" />
+              <circle id="left-ear" cx="70" cy="30" r="10" fill="#d98880" />
+              <circle id="right-ear" cx="130" cy="30" r="10" fill="#d98880" />
+              <circle id="left-eye" cx="85" cy="55" r="5" fill="#2ecc71" />
+              <circle id="right-eye" cx="115" cy="55" r="5" fill="#2ecc71" />
+              <path id="tail" d="M140 140 C180 150, 170 100, 140 90" stroke="#a04000" stroke-width="10" fill="none" />
+            </svg>
+            <figcaption>Ваш будущий котик</figcaption>
+          </figure>
+
+          <form class="constructor-form" action="#" method="post">
+            <fieldset>
+              <legend>Цвета</legend>
+              <label for="fur-color">Цвет шерсти</label>
+              <input type="color" id="fur-color" name="furColor" value="#f5cba7">
+
+              <label for="ears-color">Цвет ушек</label>
+              <input type="color" id="ears-color" name="earsColor" value="#d98880">
+
+              <label for="tail-color">Цвет хвоста</label>
+              <input type="color" id="tail-color" name="tailColor" value="#a04000">
+            </fieldset>
+
+            <fieldset>
+              <legend>Особенности</legend>
+              <label for="pattern">Раскраска</label>
+              <select id="pattern" name="pattern">
+                <option value="plain">Однотонный</option>
+                <option value="striped">Полосатый</option>
+                <option value="spotted">Пятнистый</option>
+              </select>
+
+              <label for="eyes-color">Цвет глаз</label>
+              <select id="eyes-color" name="eyesColor">
+                <option value="green">Зелёные</option>
+                <option value="blue">Голубые</option>
+                <option value="amber">Жёлтые</option>
+              </select>
+
+              <label for="temper">Характер</label>
+              <select id="temper" name="temper">
+                <option value="playful">Игривый</option>
+                <option value="calm">Спокойный</option>
+                <option value="proud">Гордый</option>
+              </select>
+            </fieldset>
+
+            <div class="constructor-actions">
+              <button type="reset" class="btn-reset">Сбросить</button>
+              <button type="submit" class="btn-add">В корзину</button>
+            </div>
+          </form>
+        </div>
+      </section>
+	  <section class="feedback" aria-labelledby="feedback-title">
+		<h2 id="feedback-title" class="feedback-title">Оставить заявку</h2>
+		<p class="feedback-description">
+		  Наши котики не любят ждать — но ради вас сделают исключение.
+		  Заполните форму, и мы подберём пушистое совершенство лично под вас.
+		</p>
+
+		<form class="feedback-form" action="#" method="post">
+		  <div class="form-field">
+		    <label for="name">Имя</label>
+		    <input type="text" id="name" name="name" placeholder="Как к вам обращаться?" required>
+		  </div>
+
+		  <div class="form-field">
+			<label for="phone">Телефон</label>
+			<input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+		  </div>
+
+		  <div class="form-field">
+			<label for="email">E-mail</label>
+			<input type="email" id="email" name="email" placeholder="example@mail.ru" required>
+		  </div>
+
+		  <div class="form-checkbox">
+			<input type="checkbox" id="consent" name="consent" required>
+			<label for="consent">
+			  Согласен(а) на обработку персональных данных и обещаю не прятаться от котиков.
+			</label>
+		  </div>
+
+		  <button class="form-button" type="submit">Отправить заявку</button>
+		</form>
+	  </section>
+    </main>
+
+	<footer class="main-footer">
+	  <div class="footer-inner">
+        <p>&copy; 2025 Котозавод «Креативная киска»</p>
+        <p class="footer-tagline">
+	  	  Мы не просто создаём котов — мы выпускаем в мир пушистые катастрофы с душой.
+        </p>
+
+        <ul class="footer-socials">
+		  <li>
+			<a href="https://t.me/yourcatfactory" target="_blank" rel="noopener noreferrer">
+              <img src="icons/telegram.svg" alt="Telegram">
+			</a>
+		  </li>
+		  <li>
+			<a href="https://vk.com/yourcatfactory" target="_blank" rel="noopener noreferrer">
+			  <img src="icons/vk.svg" alt="ВКонтакте">
+			</a>
+		  </li>
+		</ul>
+	  </div>
+	</footer>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Корзина — Креативная киска</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header class="main-header">
+      <nav class="main-navigation">
+        <a href="index.html"><img src="logo.png" alt="Наш логотип"></a>
+        <ul>
+          <li class="menu-user"><a href="user.html">Пользователь</a></li>
+          <li class="menu-basket"><a href="basket.html" class="active">В корзину</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <h1 class="main-title">Ваша корзина</h1>
+      <p class="main-description">
+        Тут собрались все киски, которых вы приручили (или хотя бы попробовали).  
+        Осталось решить — кто поедет к вам первым.
+      </p>
+
+      <section class="basket-items" aria-labelledby="basket-title">
+        <h2 id="basket-title" class="visually-hidden">Список товаров в корзине</h2>
+
+        <!-- Пример одного элемента корзины -->
+        <article class="basket-item">
+          <input type="checkbox" id="cat-1" class="basket-check">
+          <figure class="basket-preview">
+            <img src="cats/custom-cat1.svg" alt="Сконструированный кот №1">
+          </figure>
+
+          <div class="basket-info">
+            <h3 class="basket-name">Мурчелло</h3>
+            <ul class="basket-characteristics">
+              <li><strong>Цвет шерсти:</strong> персиковый</li>
+              <li><strong>Цвет глаз:</strong> зелёный</li>
+              <li><strong>Характер:</strong> гордый, но ласковый</li>
+              <li><strong>Раскраска:</strong> полосатая</li>
+            </ul>
+          </div>
+
+          <div class="basket-price">
+            <p><strong>12 900 ₽</strong></p>
+          </div>
+
+          <button class="basket-remove" aria-label="Удалить из корзины">&times;</button>
+        </article>
+
+        <!-- Ещё пример -->
+        <article class="basket-item">
+          <input type="checkbox" id="cat-2" class="basket-check">
+          <figure class="basket-preview">
+            <img src="cats/custom-cat2.svg" alt="Сконструированная кошка №2">
+          </figure>
+
+          <div class="basket-info">
+            <h3 class="basket-name">Пушинка</h3>
+            <ul class="basket-characteristics">
+              <li><strong>Цвет шерсти:</strong> белый</li>
+              <li><strong>Цвет глаз:</strong> голубой</li>
+              <li><strong>Характер:</strong> игривая</li>
+              <li><strong>Раскраска:</strong> однотонная</li>
+            </ul>
+          </div>
+
+          <div class="basket-price">
+            <p><strong>10 500 ₽</strong></p>
+          </div>
+
+          <button class="basket-remove" aria-label="Удалить из корзины">&times;</button>
+        </article>
+      </section>
+
+      <section class="basket-summary">
+        <h2 class="visually-hidden">Итоговая сумма</h2>
+        <p class="basket-total">Итого: <strong>23 400 ₽</strong></p>
+        <button class="btn-checkout">Оформить заказ</button>
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      <div class="footer-inner">
+        <p>&copy; 2025 Котозавод «Креативная киска»</p>
+        <p class="footer-tagline">
+	  	  Мы не просто создаём котов — мы выпускаем в мир пушистые катастрофы с душой.
+        </p>
+        <ul class="footer-socials">
+          <li>
+            <a href="https://t.me/yourcatfactory" target="_blank" rel="noopener noreferrer">
+              <img src="icons/telegram.svg" alt="Telegram">
+            </a>
+          </li>
+          <li>
+            <a href="https://vk.com/yourcatfactory" target="_blank" rel="noopener noreferrer">
+              <img src="icons/vk.svg" alt="ВКонтакте">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
