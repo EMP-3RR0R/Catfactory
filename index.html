@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Котозавод «Креативная киска»</title>
     <link rel="stylesheet" href="styles/style.css">
+	<link rel="stylesheet" href="styles/index.css">
   </head>
   <body>
     <header class="main-header">
@@ -96,71 +97,70 @@
         <button class="arrow-right" aria-label="Следующий отзыв">→</button>
       </section>
 
-      <section class="constructor" aria-labelledby="constructor-title">
-        <h2 id="constructor-title" class="constructor-title">Собери своего котика!</h2>
-		<p class="constructor-intro">
+	  <section class="constructor" aria-labelledby="constructor-title">
+	    <h2 id="constructor-title" class="constructor-title">Собери своего котика!</h2>
+	    <p class="constructor-intro">
 		  Настрой уши, хвост и уровень наглости. Создай питомца, который будет мурчать,
 		  когтить и смотреть на тебя свысока — как и положено звезде семьи.
-		</p>
+	    </p>
+	    <div class="constructor-body">
+		  <figure class="constructor-preview">
+		    <div class="constructor-cat-container">
+			  <svg class="constructor-cat" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+			    <circle id="body" cx="100" cy="120" r="50" fill="#f5cba7" />
+			    <circle id="head" cx="100" cy="60" r="35" fill="#f5cba7" />
+			    <circle id="left-ear" cx="70" cy="30" r="10" fill="#d98880" />
+			    <circle id="right-ear" cx="130" cy="30" r="10" fill="#d98880" />
+			    <circle id="left-eye" cx="85" cy="55" r="5" fill="#2ecc71" />
+			    <circle id="right-eye" cx="115" cy="55" r="5" fill="#2ecc71" />
+			    <path id="tail" d="M140 140 C180 150, 170 100, 140 90" stroke="#a04000" stroke-width="10" fill="none" />
+			  </svg>
+			  <figcaption>Ваш будущий котик</figcaption>
+		   </div>
+		  </figure>
+		  <form class="constructor-form" action="#" method="post">
+		    <fieldset>
+			  <legend>Цвета</legend>
+			  <label for="fur-color">Цвет шерсти</label>
+			  <input type="color" id="fur-color" name="furColor" value="#f5cba7">
 
-        <div class="constructor-body">
-          <figure class="constructor-preview">
-            <svg class="constructor-cat" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-              <circle id="body" cx="100" cy="120" r="50" fill="#f5cba7" />
-              <circle id="head" cx="100" cy="60" r="35" fill="#f5cba7" />
-              <circle id="left-ear" cx="70" cy="30" r="10" fill="#d98880" />
-              <circle id="right-ear" cx="130" cy="30" r="10" fill="#d98880" />
-              <circle id="left-eye" cx="85" cy="55" r="5" fill="#2ecc71" />
-              <circle id="right-eye" cx="115" cy="55" r="5" fill="#2ecc71" />
-              <path id="tail" d="M140 140 C180 150, 170 100, 140 90" stroke="#a04000" stroke-width="10" fill="none" />
-            </svg>
-            <figcaption>Ваш будущий котик</figcaption>
-          </figure>
+			  <label for="ears-color">Цвет ушек</label>
+			  <input type="color" id="ears-color" name="earsColor" value="#d98880">
 
-          <form class="constructor-form" action="#" method="post">
-            <fieldset>
-              <legend>Цвета</legend>
-              <label for="fur-color">Цвет шерсти</label>
-              <input type="color" id="fur-color" name="furColor" value="#f5cba7">
+			  <label for="tail-color">Цвет хвоста</label>
+			  <input type="color" id="tail-color" name="tailColor" value="#a04000">
+		    </fieldset>
 
-              <label for="ears-color">Цвет ушек</label>
-              <input type="color" id="ears-color" name="earsColor" value="#d98880">
+		    <fieldset>
+			  <legend>Особенности</legend>
+			  <label for="pattern">Раскраска</label>
+			  <select id="pattern" name="pattern">
+			    <option value="plain">Однотонный</option>
+			    <option value="striped">Полосатый</option>
+			    <option value="spotted">Пятнистый</option>
+			  </select>
 
-              <label for="tail-color">Цвет хвоста</label>
-              <input type="color" id="tail-color" name="tailColor" value="#a04000">
-            </fieldset>
+			  <label for="eyes-color">Цвет глаз</label>
+			  <select id="eyes-color" name="eyesColor">
+			    <option value="green">Зелёные</option>
+			    <option value="blue">Голубые</option>
+			    <option value="amber">Жёлтые</option>
+			  </select>
 
-            <fieldset>
-              <legend>Особенности</legend>
-              <label for="pattern">Раскраска</label>
-              <select id="pattern" name="pattern">
-                <option value="plain">Однотонный</option>
-                <option value="striped">Полосатый</option>
-                <option value="spotted">Пятнистый</option>
-              </select>
-
-              <label for="eyes-color">Цвет глаз</label>
-              <select id="eyes-color" name="eyesColor">
-                <option value="green">Зелёные</option>
-                <option value="blue">Голубые</option>
-                <option value="amber">Жёлтые</option>
-              </select>
-
-              <label for="temper">Характер</label>
-              <select id="temper" name="temper">
-                <option value="playful">Игривый</option>
-                <option value="calm">Спокойный</option>
-                <option value="proud">Гордый</option>
-              </select>
-            </fieldset>
-
-            <div class="constructor-actions">
-              <button type="reset" class="btn-reset">Сбросить</button>
-              <button type="submit" class="btn-add">В корзину</button>
-            </div>
-          </form>
-        </div>
-      </section>
+			  <label for="temper">Характер</label>
+			  <select id="temper" name="temper">
+			    <option value="playful">Игривый</option>
+			    <option value="calm">Спокойный</option>
+			    <option value="proud">Гордый</option>
+			  </select>
+		    </fieldset>
+		    <div class="constructor-actions">
+			  <button type="reset" class="btn-reset">Сбросить</button>
+		  	  <button type="submit" class="btn-add">В корзину</button>
+		    </div>
+		  </form>
+	    </div>
+	  </section>
 	  <section class="feedback" aria-labelledby="feedback-title">
 		<h2 id="feedback-title" class="feedback-title">Оставить заявку</h2>
 		<p class="feedback-description">
