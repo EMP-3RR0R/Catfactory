@@ -1,0 +1,162 @@
+body:not(.profile-page) .main-content {
+  /* никаких эффектов */
+}
+
+/* Сделаем основную зону main красивой, гибкой и адаптивной */
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-top: 2rem;
+}
+
+.user-info, .user-orders {
+  background: #fff7f2;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(255,107,53,0.09);
+  padding: 2rem;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-field label {
+  margin-bottom: 0.3rem;
+  font-size: 1.04rem;
+  color: #ff6b35;
+}
+
+.user-form input, .user-form textarea {
+  border: 1.8px solid #ffd9c0;
+  border-radius: 7px;
+  background: #fff;
+  padding: 0.85rem;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  transition: border .2s;
+}
+
+.user-form input:focus,
+.user-form textarea:focus {
+  border-color: #ff6b35;
+  outline: none;
+  background: #ffefea;
+}
+
+.user-actions {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+.btn-save,
+.btn-logout {
+  flex: 1;
+  min-width: 110px;
+  margin: 0;
+  background-color: #ff6b35;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background .2s;
+}
+.btn-save:hover {
+  background: #ff935f;
+}
+.btn-logout {
+  background: #818181;
+}
+.btn-logout:hover {
+  background: #ff6b35;
+}
+
+.user-orders {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 8px rgba(255,107,53,0.08);
+  padding: 1rem;
+  transition: box-shadow 0.2s;
+}
+
+.order-item:hover {
+  box-shadow: 0 4px 20px rgba(255,107,53,0.15);
+}
+
+.order-item img {
+  width: 58px;
+  height: 58px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #ffd9c0;
+  background: #fff7f2;
+}
+
+.order-item div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.order-item p {
+  margin-bottom: 0.25rem;
+}
+
+.order-item small {
+  color: #bfbfbf;
+}
+
+/* Адаптивность: мобильная и планшеты */
+@media (max-width: 900px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+  .user-info, .user-orders {
+    margin-bottom: 2rem;
+  }
+}
+@media (max-width: 600px) {
+  .main-content {
+    padding: 0.5rem !important;
+    gap: 1rem;
+  }
+  .user-info, .user-orders {
+    padding: 1rem;
+  }
+  .order-item img {
+    width: 40px;
+    height: 40px;
+  }
+  .btn-save, .btn-logout {
+    padding: 0.5rem 0.7rem;
+    font-size: 1rem;
+    min-width: 75px;
+  }
+}
