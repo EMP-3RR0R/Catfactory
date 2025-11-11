@@ -1,0 +1,135 @@
+/* basket.css */
+
+/* Стили для основного контейнера карточки товара */
+.basket-item {
+  display: flex; /* Включаем flexbox для карточки */
+  align-items: flex-start; /* Выравниваем элементы по верхнему краю */
+  gap: 20px; /* Расстояние между основными блоками (фото, инфо, цена) */
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  position: relative; /* Для абсолютного позиционирования кнопки удаления */
+}
+
+/* Блок с фото и именем */
+.basket-preview {
+  display: flex;
+  flex-direction: column; /* Ставим элементы в колонку (фото, потом имя) */
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0; /* Запрещаем блоку сжиматься */
+  width: 120px; /* Фиксированная ширина для блока с фото */
+}
+
+.basket-preview img {
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.basket-name {
+  margin: 0;
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+/* Блок с характеристиками - займет всё доступное пространство */
+.basket-info {
+  flex-grow: 1; /* Позволяем этому блоку растягиваться и занимать всё свободное место */
+}
+
+.basket-characteristics {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.basket-characteristics li {
+  margin-bottom: 5px;
+}
+
+/* Блок с ценой и управляющими элементами */
+.basket-price {
+  display: flex;
+  flex-direction: column; /* Цена, чекбокс и кнопка будут в колонку */
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0; /* Запрещаем сжиматься */
+  width: 120px; /* Фиксированная ширина для правого блока */
+}
+
+.basket-price p {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+/* Стили для чекбокса */
+.basket-check {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Стили для кнопки удаления */
+.basket-remove {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background-color: #ff4757;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.basket-remove:hover {
+  background-color: #ff3742;
+}
+
+/* Стили для блока с итоговой суммой */
+.basket-summary {
+  text-align: right;
+  padding: 20px;
+  border-top: 2px solid #e0e0e0;
+  margin-top: 20px;
+}
+
+.basket-total {
+  font-size: 1.3em;
+  margin-bottom: 15px;
+}
+
+.btn-checkout {
+  padding: 12px 30px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-checkout:hover {
+  background-color: #45a049;
+}
+
+/* Вспомогательный класс для скрытия элементов (например, заголовков) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
