@@ -1,28 +1,28 @@
 .main-description {
-  margin-bottom: 1.5em; /* или любое другое значение, например 20px, 2em */
+  margin-bottom: 1.5em;
 }
 
-/* Стили для основного контейнера карточки товара */
+/* Карточка товара */
 .basket-item {
-  display: flex; /* Включаем flexbox для карточки */
-  align-items: flex-start; /* Выравниваем элементы по верхнему краю */
+  display: flex;
+  align-items: flex-start;
   gap: 20px; /* Расстояние между основными блоками (фото, инфо, цена) */
   padding: 20px;
   border: 1px solid #e0e0e0;
   border-radius: 12px;
   margin-bottom: 20px;
   background-color: #fff;
-  position: relative; /* Для абсолютного позиционирования кнопки удаления */
+  position: relative;
 }
 
-/* Блок с фото и именем */
+/* Фото + имя */
 .basket-preview {
   display: flex;
-  flex-direction: column; /* Ставим элементы в колонку (фото, потом имя) */
+  flex-direction: column;
   align-items: center;
   gap: 10px;
-  flex-shrink: 0; /* Запрещаем блоку сжиматься */
-  width: 120px; /* Фиксированная ширина для блока с фото */
+  flex-shrink: 0;
+  width: 120px;
 }
 
 .basket-preview img {
@@ -39,9 +39,9 @@
   font-weight: bold;
 }
 
-/* Блок с характеристиками - займет всё доступное пространство */
+
 .basket-info {
-  flex-grow: 1; /* Позволяем этому блоку растягиваться и занимать всё свободное место */
+  flex-grow: 1;
 }
 
 .basket-characteristics {
@@ -54,14 +54,14 @@
   margin-bottom: 5px;
 }
 
-/* Блок с ценой и управляющими элементами */
+/* Цена + управляющие элементы */
 .basket-price {
   display: flex;
-  flex-direction: column; /* Цена, чекбокс и кнопка будут в колонку */
+  flex-direction: column;
   align-items: center;
   gap: 15px;
-  flex-shrink: 0; /* Запрещаем сжиматься */
-  width: 120px; /* Фиксированная ширина для правого блока */
+  flex-shrink: 0;
+  width: 120px;
 }
 
 .basket-price p {
@@ -69,14 +69,12 @@
   font-size: 1.2em;
 }
 
-/* Стили для чекбокса */
 .basket-check {
   width: 20px;
   height: 20px;
   cursor: pointer;
 }
 
-/* Стили для кнопки удаления */
 .basket-remove {
   width: 30px;
   height: 30px;
@@ -96,7 +94,7 @@
   background-color: #ff3742;
 }
 
-/* Стили для блока с итоговой суммой */
+/* Блок с итоговой суммой */
 .basket-summary {
   text-align: right;
   padding: 20px;
@@ -124,32 +122,8 @@
   background-color: #45a049;
 }
 
-/* Вспомогательный класс для скрытия элементов (например, заголовков) */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
-/* Стили для мобильных устройств (экран меньше 768px) */
-@media (max-width: 650px) { /**/
-  /* Хэдер в столбец */
-  .main-navigation {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
-  }
-
-  .main-navigation ul {
-    flex-direction: column;
-    gap: 10px;
-  }
-
+/* Стили для мобильных устройств (экран меньше 650px) */
+@media (max-width: 650px) {
   /* Карточки товаров в столбец */
   .basket-item {
     flex-direction: column;
@@ -159,39 +133,23 @@
 
   .basket-preview,
   .basket-price {
-    width: 100%; /* Занимают всю ширину */
+    width: 100%;
   }
 
   .basket-price {
-    order: -1; /* Перемещаем блок с ценой и управлением вверх */
-    flex-direction: row; /* Цена и кнопки в строку */
+    order: -1; /* Блок с ценой и управлением уходит вверх */
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
-
-  /* Футер */
-  .footer-inner {
-    text-align: center;
-  }
-
-  .footer-tagline {
-    margin: 10px 0;
-  }
-
-  /* Общие улучшения для мобильных */
-
-
-  .main-title {
-    font-size: 1.5em;
-  }
 }
 
-/* Дополнительные базовые стили для flex-контейнеров */
+/* Доп. стили для flex-контейнеров */
 .main-navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
+  flex-wrap: wrap; /* Элементы переносятся на новую строку */
 }
 
 .main-navigation ul {

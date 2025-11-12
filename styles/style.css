@@ -211,3 +211,27 @@ footer img {
   white-space: nowrap;
   border: 0;
 }
+
+/* Стили для мобильных устройств (экран меньше 650px) */
+@media (max-width: 650px) {
+  /* Хэдер в столбец */
+  .main-navigation {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+    .main-navigation ul {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Футер */
+  .footer-tagline {
+    margin: 10px 0;
+  }
+
+  /* Уменьшение размера заголовка */
+  .main-title {
+    font-size: 1.5em;
+  }
+}
