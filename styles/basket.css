@@ -1,4 +1,6 @@
-/* basket.css */
+.main-description {
+  margin-bottom: 1.5em; /* или любое другое значение, например 20px, 2em */
+}
 
 /* Стили для основного контейнера карточки товара */
 .basket-item {
@@ -132,4 +134,70 @@
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+/* Стили для мобильных устройств (экран меньше 768px) */
+@media (max-width: 650px) { /**/
+  /* Хэдер в столбец */
+  .main-navigation {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .main-navigation ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Карточки товаров в столбец */
+  .basket-item {
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+  }
+
+  .basket-preview,
+  .basket-price {
+    width: 100%; /* Занимают всю ширину */
+  }
+
+  .basket-price {
+    order: -1; /* Перемещаем блок с ценой и управлением вверх */
+    flex-direction: row; /* Цена и кнопки в строку */
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Футер */
+  .footer-inner {
+    text-align: center;
+  }
+
+  .footer-tagline {
+    margin: 10px 0;
+  }
+
+  /* Общие улучшения для мобильных */
+
+
+  .main-title {
+    font-size: 1.5em;
+  }
+}
+
+/* Дополнительные базовые стили для flex-контейнеров */
+.main-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
+}
+
+.main-navigation ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
 }
