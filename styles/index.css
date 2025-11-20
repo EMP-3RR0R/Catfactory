@@ -540,3 +540,70 @@
     min-width: 0;
   }
 }
+.main-content p { /* горизонтальные карточки в main */
+  background: #fff7f2;
+  border-left: 4px solid #ff6b35;
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(255,107,53,0.1);
+  margin-bottom: 1.5rem;
+}
+
+
+.jobs { /* Наши киски — горизонтальная лента */
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 1rem;
+}
+
+.jobs .pussycat-card {
+  display: inline-block;
+  vertical-align: top;
+  width: 260px;
+  margin-right: 1.5rem;
+  white-space: normal;
+}
+
+.reviews { /* контейнер отзывов */
+  position: relative;
+  padding: 0 3rem; /* чтобы стрелки не перекрывали карточки */
+}
+
+.reviews .review-card { /* горизонтальный скролл отзывов */
+  display: inline-block;
+  vertical-align: top;
+  width: 300px;
+  margin-right: 1rem;
+  white-space: normal;
+}
+
+.reviews {
+  overflow: hidden; /* скрывает скролл */
+}
+
+.reviews-scroll {
+  white-space: nowrap;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.arrow-left,
+.arrow-right { /* стрелки — фиксированы внутри секции */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  
+  padding: 0.6rem 1rem;
+  font-size: 1.4rem;
+  background: #ff6b35;
+  border-radius: 8px;
+}
+
+.arrow-left {
+  left: 5px;
+}
+
+.arrow-right {
+  right: 5px;
+}
