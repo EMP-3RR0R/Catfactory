@@ -1,322 +1,34 @@
-/* ------- Котоконструктор ------- */
-
-.csscat {
-  --fur: #edc77b;
-  --belly: #fff;
-  --spot: #d1925e;
-  --ear: #c37f2b;
-  --inner-ear: #ffeabb;
-  --eye: #16c782;
-  --pupil: #23271f;
-  --nose: #a15d3a;
-  --whisker: #eac576;
-  --cheek: #ffe6b3;
-  --border: #a87a3e;
-  width: 270px;
-  height: 300px;
-  position: relative;
-  margin: 0 auto;
-  background: radial-gradient(ellipse at 54% 60%, #fff8e7 60%, #ffe2b8 99%);
-  border-radius: 50%/47%;
-  box-shadow: 0 8px 32px #ffd28a32, 0 -2px 12px #ffd28a16 inset;
-}
-
-.cat-body {
-  position: absolute;
-  left: 50%; top: 49%;
-  width: 160px; height: 186px;
-  background: var(--fur);
-  border-radius: 41% 50% 48% 44% / 63% 67% 90% 80%;
-  border: 3px solid var(--border);
-  box-shadow: 0 3px 20px #cca56425;
-  transform: translate(-50%,0);
-  z-index: 2;
-}
-.cat-belly {
-  position: absolute;
-  left: 50%; top: 68%;
-  width: 84px; height: 40px;
-  background: var(--belly);
-  border-radius: 50% 50% 48% 49% / 72% 92% 87% 90%;
-  transform: translate(-50%,-40%);
-  opacity: 0.92;
-  z-index: 4;
-}
-.cat-spot {
-  position: absolute;
-  background: var(--spot);
-  opacity: var(--pattern-opacity,0.75);
-}
-.cat-spot-1 {
-  width: 44px; height: 25px;
-  left: 64%; top: 65%;
-  border-radius: 45% 55% 70% 30% / 71% 55% 90% 40%;
-}
-.cat-spot-2 {
-  width: 40px; height: 20px;
-  left: 29%; top: 71%;
-  border-radius: 60% 47% 47% 80% / 80% 80% 85% 70%;
-}
-
-.cat-ear {
-  position: absolute;
-  width: 54px; height: 80px;
-  top: 0;
-  background: var(--ear);
-  border: 3.8px solid var(--border);
-  transform-origin: bottom center;
-  z-index: 3;
-}
-.cat-ear-left {
-  left: 14px;
-  border-radius: 70% 60% 47% 80% / 60% 70% 90% 70%;
-  transform: rotate(-18deg) skewY(-8deg);
-}
-.cat-ear-right {
-  right: 14px;
-  border-radius: 60% 70% 80% 47% / 70% 60% 70% 90%;
-  transform: rotate(18deg) skewY(8deg);
-}
-.cat-inner-ear {
-  position: absolute;
-  width: 23px; height: 38px;
-  background: var(--inner-ear);
-  z-index: 4;
-  top: 10px;
-  border-radius: 83% 70% 62% 71%/62% 80% 81% 62%;
-}
-.cat-inner-ear-left {left: 25px;}
-.cat-inner-ear-right {right: 25px;}
-
-.cat-head {
-  position: absolute;
-  left: 50%; top: 13%;
-  width: 120px; height: 112px;
-  background: var(--fur);
-  border-radius: 61% 56% 56% 68% / 75% 72% 75% 74%;
-  border: 3.5px solid var(--border);
-  transform: translateX(-50%);
-  z-index: 8;
-  box-shadow: 0 5px 13px #e6a76825;
-}
-.cat-eye {
-  position: absolute;
-  top: 51px;
-  width: 34px; height: 29px;
-  background: var(--eye);
-  border-radius: 55% 59% 65% 58% / 66% 63% 77% 70%;
-  border: 2px solid #352e20;
-  z-index: 10;
-}
-.cat-eye-left { left: 44%; }
-.cat-eye-right { left: 61%; }
-.cat-pupil {
-  position: absolute;
-  top: 57px;
-  width: 12px; height: 18px;
-  background: var(--pupil);
-  border-radius: 60% 60% 70% 70%/60% 70% 80% 80%;
-  z-index: 11;
-}
-.cat-pupil-left { left: 52%; }
-.cat-pupil-right { left: 68%; }
-.cat-nose {
-  position: absolute;
-  top: 92px; left: 50%;
-  width: 20px; height: 16px;
-  background: var(--nose);
-  border-radius: 52% 51% 49% 49%/70% 80% 80% 70%;
-  border: 1.5px solid #7a4636;
-  transform: translateX(-50%);
-  z-index: 19;
-}
-.cat-mouth {
-  position: absolute;
-  top: 106px; left: 50%;
-  width: 30px; height: 24px;
-  border-bottom: 2.2px solid #c9925a;
-  border-radius: 0 0 40px 40px;
-  transform: translateX(-50%);
-  z-index: 19;
-  background: none;
-}
-.cat-mouth-happy { }
-.cat-mouth-serious {
-  height: 8px;
-  border-bottom: 2.5px solid #88662a;
-}
-.cat-mouth-grumpy {
-  height: 14px;
-  border-bottom: 2.5px solid #88662a;
-  border-radius: 0 0 59px 5px;
-  left: 53%;
-}
-.cat-mouth-sleepy {
-  height: 14px;
-  border-bottom: 2.2px dashed #998558;
-  opacity: .8;
-}
-.cat-whisker {
-  position: absolute;
-  width: 50px;
-  height: 8px;
-  top: 106px;
-  background: none;
-  z-index: 21;
-  border-top: 2.2px solid var(--whisker);
-  opacity: 0.6;
-}
-.cat-whisker-left {
-  left: 22%;
-  transform: rotate(-11deg);
-}
-.cat-whisker-right {
-  right: 22%;
-  transform: rotate(11deg);
-}
-.cat-cheek {
-  position: absolute;
-  width: 23px; height: 14px;
-  background: var(--cheek);
-  border-radius: 50%;
-  top: 101px;
-  z-index: 19;
-  opacity: .4;
-}
-.cat-cheek-left { left: 35%; }
-.cat-cheek-right { right: 35%; }
-
-.cat-tail {
-  position: absolute;
-  left: 79%; top: 73%;
-  width: 88px; height: 34px;
-  background: var(--fur);
-  border-radius: 50% 60% 30% 80%/80% 75% 90% 40%;
-  box-shadow: 0 4px 14px #905f1d18;
-  border: 2px solid var(--border);
-  transform: rotate(24deg);
-  z-index: 1;
-}
-.csscat[data-tail="fluffy"] .cat-tail {
-  width: 100px; height: 38px;
-  border-radius: 60% 90% 40% 100%/100% 75% 94% 50%;
-  box-shadow: 0 6px 15px #905f1d22;
-  background: repeating-linear-gradient(45deg, var(--fur) 0 12px, var(--spot) 13px 20px);
-}
-.csscat[data-tail="long"] .cat-tail {
-  width: 118px; height: 21px;
-  border-radius: 40% 80% 40% 100%/100% 55% 99% 70%;
-  background: var(--fur);
-}
-.csscat[data-tail="short"] .cat-tail {
-  width: 38px; height: 14px;
-  background: var(--fur);
-  border-radius: 33% 80% 50% 60%/100% 75% 99% 70%;
-}
-.csscat[data-tail="bobtail"] .cat-tail {
-  width: 24px; height: 18px;
-  left: 76%;
-  background: var(--fur);
-  border-radius: 65%;
-}
-.csscat[data-earshape="pointy"] .cat-ear {
-  border-radius: 62% 54% 37% 75%/70% 75% 90% 60%;
-}
-.csscat[data-earshape="round"] .cat-ear {
-  border-radius: 80% 72% 60% 80%/79% 93% 100% 88%;
-}
-.csscat[data-earshape="folded"] .cat-ear {
-  border-radius: 48% 70% 97% 35%/93% 89% 100% 60%;
-  top: 17px;
-}
-
-/* Раскраска — пятна/полоски/лапки */
-.csscat[data-pattern="plain"] .cat-spot { display: none; }
-.csscat[data-pattern="spot"] .cat-spot { display: block; }
-.csscat[data-pattern="socks"] .cat-spot-1,
-.csscat[data-pattern="socks"] .cat-spot-2 {
-  top: 85%;
-  left: 31%;
-  width: 26px;
-  height: 18px;
-  border-radius: 40% 40% 60% 77%/72% 77% 100% 100%;
-  background: var(--belly);
-  opacity: .89;
-}
-.csscat[data-pattern="tabby"] .cat-spot-1,
-.csscat[data-pattern="tabby"] .cat-spot-2 {
-  background: repeating-linear-gradient(120deg, var(--spot) 0 9px, transparent 10px 18px);
-  opacity: .7;
-  width: 33px;
-  height: 12px;
-  left: 61%; top: 61%;
-}
-
-/* Мордашка (эмоции/настроение) */
-.csscat[data-mood="happy"]  .cat-mouth {border-bottom: 2.2px solid #c9925a;}
-.csscat[data-mood="serious"] .cat-mouth {border-bottom: 2.5px solid #88662a;height: 14px;}
-.csscat[data-mood="sleepy"] .cat-mouth {border-bottom: 2.2px dashed #998558;opacity:.9;}
-.csscat[data-mood="grumpy"] .cat-mouth {
-  border-bottom: 2.5px solid #88662a;
-  border-radius: 0 0 59px 8px;
-  height: 17px;
-  left: 53%;
-}
-
-@media (max-width:650px) {
-  .csscat { width: 170px; height: 178px; }
-  .cat-body {width: 92px;height: 106px;}
-  .cat-head {width: 62px;height: 62px;}
-  .cat-tail {width:50px;height:18px;}
-  .cat-ear {width: 25px; height: 34px;}
-  .cat-inner-ear {width:10px;height:16px;}
-  .cat-eye {width:19px;height:13px;}
-  .cat-pupil {width:5px;height:8px;}
-  .cat-nose {width:8px;height:7px;}
-  .cat-mouth {width:13px;height:9px;}
-  .cat-cheek {width:10px;height:6px;}
-  .cat-spot, .cat-belly {width:24px;height:12px;}
-}
-
-/* ------- Стилизация формы конструктора и блока -------- */
+/* ------- КОНСТРУКТОР ------- */
 .constructor {
   background: #ffeadd;
   border-radius: 18px;
   box-shadow: 0 2px 22px rgba(255,107,53,0.13);
-  padding: 2.7rem 1.5rem 2.7rem 1.5rem;
+  padding: 2.7rem 1.5rem;
   margin-bottom: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
+
 .constructor-title {
   color: #ff6b35;
   font-size: 2rem;
   text-align: center;
   margin-bottom: 1.2rem;
 }
+
 .constructor-intro {
   margin-bottom: 2rem;
   text-align: center;
   padding: 0 1rem;
 }
+
 .constructor-body {
-  display: grid;
-  grid-template-columns: 1fr 1.05fr;
-  gap: 2.7rem;
-  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  max-width: 920px;
-  background: none;
-}
-@media (max-width: 900px) {
-  .constructor-body {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    max-width: 100%;
-    justify-items: center;
-  }
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .constructor-preview {
@@ -324,7 +36,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 250px;
+  flex: 1;
 }
 
 .constructor-preview figcaption {
@@ -333,116 +45,121 @@
   color: #b9a280;
 }
 
-/* -------- Форма конструктора --------- */
-.constructor-form {
+.constructor-cat {
   width: 100%;
-  max-width: 370px;
-  min-width: 230px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 350px;
+  height: auto;
+}
+
+/* Форма конструктора */
+.constructor-form {
+  flex: 1;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 16px rgba(255,107,53,0.13);
-  padding: 2.1rem 1.3rem 2.2rem 1.3rem;
+  padding: 2.1rem 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  max-width: 400px;
 }
+
 .constructor-form fieldset {
   border: 1.8px solid #ffc9a8;
   border-radius: 9px;
-  padding: 1.05rem 0.9rem 1.15rem 0.9rem;
-  margin-bottom: 1.1rem;
+  padding: 1.05rem 0.9rem;
   background: #fffbf8;
 }
+
 .constructor-form legend {
   color: #ff824f;
   font-weight: 600;
-  letter-spacing: 1px;
   font-size: 1.09rem;
   padding: 0 0.5rem;
-  margin-bottom: 0.3rem;
 }
+
 .constructor-form label {
   display: block;
   margin-bottom: 0.5rem;
   color: #fd7e41;
 }
+
 .constructor-form input[type="color"] {
-  width: 2.4em;
-  height: 1.5em;
-  padding: 0;
-  border: 1.2px solid #ffceb4;
-  margin-bottom: 0.5em;
-  background: #fff2e1;
+  width: 40px;
+  height: 30px;
+  border: 2px solid #ffceb4;
   border-radius: 4px;
   cursor: pointer;
-  vertical-align: middle;
-  margin-right: 8px;
+  padding: 2px;
+  background: transparent;
 }
-.constructor-form select,
-.constructor-form input[type="radio"] {
-  margin-bottom: 0.7em;
+
+.constructor-form input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 2px;
+  padding: 0;
 }
+
+.constructor-form input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.constructor-form input[type="color"]::-moz-color-swatch {
+  border: none;
+  border-radius: 2px;
+}
+
 .constructor-form select {
+  width: 100%;
   background: #fff;
   border-radius: 4px;
   border: 2px solid #ffdccd;
   font-size: 1rem;
   padding: 0.4rem;
-  transition: border-color .2s;
+  margin-bottom: 0.7em;
 }
+
 .constructor-form select:focus,
 .constructor-form input[type="color"]:focus {
   outline: #ff6b35 auto 2px;
   border-color: #ffa274;
 }
-.constructor-form input[type="radio"] {
-  margin-right: 0.4em;
-  accent-color: #ff6b35;
-}
-/* Кнопки конструктора */
+
 .constructor-actions {
   display: flex;
   gap: 1.1rem;
-  justify-content: stretch;
   margin-top: 0.8rem;
 }
+
 .btn-reset, .btn-add {
-  flex: 1 1 0;
+  flex: 1;
   border-radius: 7px;
   padding: 0.8rem 0;
   border: none;
-  background: #ff6b35;
-  color: #fff;
   font-weight: bold;
   font-size: 1.09rem;
-  box-shadow: 0 1px 9px #ffd0aa50;
   cursor: pointer;
-  transition: background 0.18s, color 0.12s;
+  transition: background 0.18s;
 }
+
 .btn-reset {
   background: #92644c;
   color: #fff7f1;
 }
+
 .btn-reset:hover {
   background: #b98967;
-  color: #fff;
 }
-.btn-add:hover {
-  background: #ff935f;
+
+.btn-add {
+  background: #ff6b35;
   color: #fff;
 }
 
-@media (max-width: 700px) {
-  .constructor { padding: 0.7rem 0.2rem 1.3rem 0.2rem; }
-  .constructor-title { font-size: 1.3rem;
-   padding-top: 1rem;
-   }
-  .constructor-body { gap: 1.1rem; }
-  .constructor-form,
-  .constructor-preview { min-width: unset; max-width: 99vw; }
+.btn-add:hover {
+  background: #ff935f;
 }
+
 
 /* ----------- ФОРМА ЗАЯВКИ ------------- */
 .feedback {
@@ -534,15 +251,6 @@
 .form-button:hover {
   background: #ff935f;
 }
-@media (max-width: 700px) {
-  .feedback { padding: 1.2rem 0.3rem 1.2rem 0.3rem; max-width: 97vw; }
-  .feedback-title { font-size: 1.1rem; }
-  .feedback-form {
-    max-width: 100%;
-    padding: 1rem 0.3rem;
-    min-width: 0;
-  }
-}
 
 .main-content {
   max-width: 100%;
@@ -561,85 +269,356 @@
   padding: 0 1rem;
 }
 
+/* ----------- НАШИ ЗВЁЗДЫ ------------- */
 
 .jobs {
-  position: relative;
-  padding: 0 1rem;
+  background-color: #fff8f0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .jobs-title {
-  position: sticky;
-  left: 0;
-  top: 0;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+  position: static;
+  background: none;
+  padding: 0;
+  grid-column: 1 / -1;
+}
+
+.pussycat-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 580px;
   background: white;
-  z-index: 10;
-  padding: 1rem 0;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(255,107,53,0.15);
+  border-top: 4px solid #ff6b35;
 }
 
-.jobs .pussycat-card {
-  display: inline-block;
-  vertical-align: top;
-  width: 260px;
-  margin-right: 1.5rem;
-  white-space: normal;
+.pussycat-name {
+  color: #ff6b35;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
-.jobs::after {
-  content: '';
-  display: block;
-  overflow-x: auto;
-  white-space: nowrap;
+.pussycat-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  margin-bottom: 1rem;
 }
 
-.reviews { /* контейнер отзывов */
+.pussycat-description {
+  flex: 1;
+  text-align: center;
+  color: #666;
+  line-height: 1.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* ----------- ОТЗЫВЫ ------------- */
+
+.reviews {
   position: relative;
-  padding: 0 3rem; /* чтобы стрелки не перекрывали карточки */
-  padding-top: 1.8rem;
+  padding: 2rem;
+  background-color: #fff8f0;
+  border-radius: 12px;
+  margin: 4rem auto;
+  max-width: 1200px;
+  display: block;
 }
 
 .reviews-title {
-  line-height: 1.3;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #ff6b35;
+  font-size: 2rem;
+  width: 100%;
+  display: block;
 }
 
-.reviews .review-card { /* горизонтальный скролл отзывов */
-  display: inline-block;
-  vertical-align: top;
-  width: 300px;
-  margin-right: 1rem;
-  white-space: normal;
+.reviews-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  position: relative;
 }
 
-.reviews {
-  overflow: hidden; /* скрывает скролл */
+.review-card {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(255,107,53,0.15);
+  border-top: 4px solid #ff6b35;
+  min-height: 400px;
 }
 
-.reviews-scroll {
-  white-space: nowrap;
-  overflow-x: auto;
-  padding-bottom: 1rem;
+.review-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.review-block {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.review-name {
+  color: #ff6b35;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.review-quote {
+  font-style: italic;
+  color: #666;
+  line-height: 1.6;
+  font-size: 1.1rem;
 }
 
 .arrow-left,
-.arrow-right { /* стрелки — фиксированы внутри секции */
+.arrow-right {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
-  padding: 0.6rem 1rem;
-  font-size: 1.4rem;
+  padding: 1rem 1.2rem;
+  font-size: 1.5rem;
   background: #ff6b35;
-  border-radius: 8px;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 .arrow-left {
-  left: 5px;
+  left: -60px;
 }
 
 .arrow-right {
-  right: 5px;
+  right: -60px;
+}
+
+.arrow-left:hover,
+.arrow-right:hover {
+  background: #e55a2b;
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+@media (max-width: 1100px) {
+  .jobs {
+    grid-template-columns: 1fr;
+    max-width: none;
+    padding: 2rem 1rem;
+    margin: 0;
+    background-color: #fff8f0;
+  }
+  
+  .pussycat-card {
+    min-height: 700px;
+    padding: 2.5rem;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 12px;
+    border-top: 4px solid #ff6b35;
+  }
+  
+  .pussycat-image {
+    height: 350px;
+    border-radius: 8px;
+  }
+  
+  .pussycat-name {
+    font-size: 2rem;
+  }
+  
+  .pussycat-description {
+    font-size: 1.3rem;
+    line-height: 1.7;
+  }
+  
+  .reviews {
+    max-width: none;
+    padding: 2rem 1rem;
+    margin: 4rem 0;
+  }
+  
+  .reviews-container {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .review-card {
+    min-height: 450px;
+    padding: 2rem;
+  }
+  
+  .review-image {
+    height: 220px;
+  }
+  
+  .review-name {
+    font-size: 1.4rem;
+  }
+  
+  .review-quote {
+    font-size: 1.2rem;
+  }
+  
+  .arrow-left,
+  .arrow-right {
+    top: 50%;
+    transform: translateY(-50%);
+    left: -80px;
+    right: auto;
+  }
+  
+  .arrow-right {
+    left: auto;
+    right: -80px;
+  }
+}
+
+@media (max-width: 900px) {
+  .constructor-body {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .constructor-form {
+    max-width: 500px;
+    width: 100%;
+  }
 }
 
 @media (max-width: 700px) {
-  .jobs-title { font-size: 1.3rem; }
-  .reviews-title {font-size: 1.3rem; }
+  .jobs {
+    gap: 1.5rem;
+    padding: 1.5rem 0.5rem;
+  }
+  
+  .pussycat-card {
+    min-height: 650px;
+    padding: 2rem;
+    max-width: 350px;
+  }
+  
+  .pussycat-image {
+    height: 300px;
+  }
+  
+  .pussycat-name {
+    font-size: 1.8rem;
+  }
+  
+  .pussycat-description {
+    font-size: 1.2rem;
+  }
+  
+  .reviews {
+    padding: 1.5rem 0.5rem;
+  }
+  
+  .reviews-container {
+    gap: 1.5rem;
+    max-width: 350px;
+  }
+  
+  .review-card {
+    min-height: 420px;
+    padding: 1.5rem;
+  }
+  
+  .review-image {
+    height: 200px;
+  }
+  
+  .arrow-left,
+  .arrow-right {
+    padding: 0.8rem 1rem;
+    font-size: 1.3rem;
+    left: -60px;
+    right: auto;
+  }
+  
+  .arrow-right {
+    left: auto;
+    right: -60px;
+  }
+  
+  .constructor {
+    padding: 1rem 0.5rem;
+  }
+  
+  .constructor-title {
+    font-size: 1.5rem;
+  }
+  
+  .constructor-form {
+    padding: 1.5rem 1rem;
+    max-width: 100%;
+  }
+  
+  .constructor-cat {
+    max-width: 280px;
+  }
+  
+  .feedback {
+    padding: 1.2rem 0.3rem;
+    max-width: 97vw;
+  }
+  
+  .feedback-title {
+    font-size: 1.1rem;
+  }
+  
+  .feedback-form {
+    max-width: 100%;
+    padding: 1rem 0.3rem;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .arrow-left,
+  .arrow-right {
+    left: -40px;
+    right: auto;
+  }
+  
+  .arrow-right {
+    left: auto;
+    right: -40px;
+  }
 }

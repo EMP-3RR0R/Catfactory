@@ -2,11 +2,10 @@
   margin-bottom: 1.5em;
 }
 
-/* Карточка товара */
 .basket-item {
   display: flex;
   align-items: flex-start;
-  gap: 20px; /* Расстояние между основными блоками (фото, инфо, цена) */
+  gap: 20px;
   padding: 20px;
   border: 1px solid #e0e0e0;
   border-radius: 12px;
@@ -15,7 +14,6 @@
   position: relative;
 }
 
-/* Фото + имя */
 .basket-preview {
   display: flex;
   flex-direction: column;
@@ -54,7 +52,6 @@
   margin-bottom: 5px;
 }
 
-/* Цена + управляющие элементы */
 .basket-price {
   display: flex;
   flex-direction: column;
@@ -94,7 +91,6 @@
   background-color: #ff3742;
 }
 
-/* Блок с итоговой суммой */
 .basket-summary {
   text-align: right;
   padding: 20px;
@@ -122,9 +118,7 @@
   background-color: #45a049;
 }
 
-/* Стили для мобильных устройств (экран меньше 650px) */
 @media (max-width: 650px) {
-  /* Карточки товаров в столбец */
   .basket-item {
     flex-direction: column;
     gap: 15px;
@@ -137,19 +131,18 @@
   }
 
   .basket-price {
-    order: -1; /* Блок с ценой и управлением уходит вверх */
+    order: -1;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
 }
 
-/* Доп. стили для flex-контейнеров */
 .main-navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* Элементы переносятся на новую строку */
+  flex-wrap: wrap;
 }
 
 .main-navigation ul {

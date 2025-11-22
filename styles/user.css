@@ -2,7 +2,6 @@ body:not(.profile-page) .main-content {
   /* никаких эффектов */
 }
 
-/* Сделаем основную зону main красивой, гибкой и адаптивной */
 .main-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -133,7 +132,6 @@ body:not(.profile-page) .main-content {
   color: #bfbfbf;
 }
 
-/* Адаптивность: мобильная и планшеты */
 @media (max-width: 900px) {
   .main-content {
     grid-template-columns: 1fr;
