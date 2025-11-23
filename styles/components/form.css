@@ -1,0 +1,71 @@
+.form-field {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: var(--font-size-base);
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 2px solid var(--color-border-input);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  background: var(--color-bg-input);
+  transition: border-color var(--transition-base), background var(--transition-base);
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: var(--color-bg-input-focus);
+}
+
+.form-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: var(--spacing-md) 0;
+}
+
+.form-checkbox input[type="checkbox"] {
+  width: 1.2em;
+  height: 1.2em;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.form-checkbox label {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  cursor: pointer;
+  margin: 0;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.form-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.form-actions .btn {
+  flex: 1;
+}
+
+

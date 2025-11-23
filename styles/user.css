@@ -1,20 +1,17 @@
-body:not(.profile-page) .main-content {
-  /* никаких эффектов */
-}
-
-.main-content {
+.user-page .main-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: var(--spacing-xl);
   align-items: flex-start;
-  margin-top: 2rem;
+  margin-top: var(--spacing-xl);
 }
 
-.user-info, .user-orders {
-  background: #fff7f2;
-  border-radius: 12px;
+.user-info,
+.user-orders {
+  background: var(--color-bg-user);
+  border-radius: var(--radius-xl);
   box-shadow: 0 2px 12px rgba(255,107,53,0.09);
-  padding: 2rem;
+  padding: var(--spacing-xl);
 }
 
 .user-info {
@@ -31,53 +28,40 @@ body:not(.profile-page) .main-content {
 .form-field label {
   margin-bottom: 0.3rem;
   font-size: 1.04rem;
-  color: #ff6b35;
+  color: var(--color-primary);
 }
 
-.user-form input, .user-form textarea {
-  border: 1.8px solid #ffd9c0;
-  border-radius: 7px;
-  background: #fff;
+.user-form input,
+.user-form textarea {
+  border: 1.8px solid var(--color-border-user);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-main);
   padding: 0.85rem;
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   margin-bottom: 0.3rem;
-  transition: border .2s;
+  transition: border var(--transition-fast);
 }
 
 .user-form input:focus,
 .user-form textarea:focus {
-  border-color: #ff6b35;
+  border-color: var(--color-primary);
   outline: none;
-  background: #ffefea;
+  background: var(--color-bg-focus);
 }
 
 .user-actions {
   display: flex;
   gap: 1.2rem;
-  margin-top: 1rem;
+  margin-top: var(--spacing-md);
 }
+
 .btn-save,
 .btn-logout {
   flex: 1;
   min-width: 110px;
   margin: 0;
-  background-color: #ff6b35;
-  color: white;
-  border: none;
-  border-radius: 7px;
-  padding: 0.8rem 1.5rem;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background .2s;
-}
-.btn-save:hover {
-  background: #ff935f;
-}
-.btn-logout {
-  background: #818181;
-}
-.btn-logout:hover {
-  background: #ff6b35;
+  padding: 0.8rem var(--spacing-lg);
+  font-size: var(--font-size-md);
 }
 
 .user-orders {
@@ -90,19 +74,19 @@ body:not(.profile-page) .main-content {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
 }
 
 .order-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  background: #fff;
-  border-radius: 8px;
+  gap: var(--spacing-md);
+  background: var(--color-bg-main);
+  border-radius: var(--radius-lg);
   box-shadow: 0 1px 8px rgba(255,107,53,0.08);
-  padding: 1rem;
-  transition: box-shadow 0.2s;
+  padding: var(--spacing-md);
+  transition: box-shadow var(--transition-fast);
 }
 
 .order-item:hover {
@@ -113,9 +97,9 @@ body:not(.profile-page) .main-content {
   width: 58px;
   height: 58px;
   object-fit: cover;
-  border-radius: 12px;
-  border: 2px solid #ffd9c0;
-  background: #fff7f2;
+  border-radius: var(--radius-xl);
+  border: 2px solid var(--color-border-user);
+  background: var(--color-bg-user);
 }
 
 .order-item div {
@@ -129,32 +113,40 @@ body:not(.profile-page) .main-content {
 }
 
 .order-item small {
-  color: #bfbfbf;
+  color: var(--color-text-disabled);
 }
 
 @media (max-width: 900px) {
   .main-content {
     grid-template-columns: 1fr;
   }
-  .user-info, .user-orders {
-    margin-bottom: 2rem;
+  
+  .user-info,
+  .user-orders {
+    margin-bottom: var(--spacing-xl);
   }
 }
+
 @media (max-width: 600px) {
   .main-content {
-    padding: 0.5rem !important;
-    gap: 1rem;
+    padding: var(--spacing-xs) !important;
+    gap: var(--spacing-md);
   }
-  .user-info, .user-orders {
-    padding: 1rem;
+  
+  .user-info,
+  .user-orders {
+    padding: var(--spacing-md);
   }
+  
   .order-item img {
     width: 40px;
     height: 40px;
   }
-  .btn-save, .btn-logout {
-    padding: 0.5rem 0.7rem;
-    font-size: 1rem;
+  
+  .btn-save,
+  .btn-logout {
+    padding: var(--spacing-xs) 0.7rem;
+    font-size: var(--font-size-base);
     min-width: 75px;
   }
 }

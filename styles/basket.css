@@ -7,10 +7,10 @@
   align-items: flex-start;
   gap: 20px;
   padding: 20px;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
+  border: 1px solid var(--color-border-neutral);
+  border-radius: var(--radius-xl);
   margin-bottom: 20px;
-  background-color: #fff;
+  background-color: var(--color-bg-main);
   position: relative;
 }
 
@@ -27,16 +27,15 @@
   width: 100%;
   max-width: 100px;
   height: auto;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
 }
 
 .basket-name {
   margin: 0;
   text-align: center;
-  font-size: 1.1em;
+  font-size: var(--font-size-md);
   font-weight: bold;
 }
-
 
 .basket-info {
   flex-grow: 1;
@@ -75,26 +74,13 @@
 .basket-remove {
   width: 30px;
   height: 30px;
-  border: none;
-  border-radius: 50%;
-  background-color: #ff4757;
-  color: white;
   font-size: 1.5em;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s;
-}
-
-.basket-remove:hover {
-  background-color: #ff3742;
 }
 
 .basket-summary {
   text-align: right;
   padding: 20px;
-  border-top: 2px solid #e0e0e0;
+  border-top: 2px solid var(--color-border-neutral);
   margin-top: 20px;
 }
 
@@ -105,17 +91,22 @@
 
 .btn-checkout {
   padding: 12px 30px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1.1em;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  font-size: var(--font-size-md);
 }
 
-.btn-checkout:hover {
-  background-color: #45a049;
+.main-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.main-navigation ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
 }
 
 @media (max-width: 650px) {
@@ -136,19 +127,4 @@
     justify-content: space-between;
     align-items: center;
   }
-}
-
-.main-navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.main-navigation ul {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  gap: 20px;
 }

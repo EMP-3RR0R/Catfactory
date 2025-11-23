@@ -2,15 +2,20 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Корзина — Креативная киска</title>
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components/button.css">
+    <link rel="stylesheet" href="styles/components/form.css">
+    <link rel="stylesheet" href="styles/components/card.css">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/basket.css">
   </head>
   <body>
     <header class="main-header">
       <nav class="main-navigation">
-        <a href="index.html"><img src="logo.png" alt="Наш логотип"></a>
+        <a href="index.html"><img src="assets/images/logo.png" alt="Наш логотип"></a>
         <ul>
           <li class="menu-user"><a href="user.html">Профиль</a></li>
           <li class="menu-basket"><a href="basket.html" class="active">В корзину</a></li>
@@ -32,7 +37,7 @@
         <article class="basket-item">
           <input type="checkbox" id="cat-1" class="basket-check">
           <figure class="basket-preview">
-            <img src="cats/custom-cat1.png" alt="Сконструированный кот №1">
+            <img src="assets/images/cats/custom-cat1.png" alt="Сконструированный кот №1">
             <figcaption class="basket-name">Мурчелло</figcaption>
           </figure>
 
@@ -50,14 +55,14 @@
             <p><strong>12 900 ₽</strong></p>
           </div>
 
-          <button class="basket-remove" aria-label="Удалить из корзины">&times;</button>
+          <button class="btn btn-danger btn-icon basket-remove" aria-label="Удалить из корзины">&times;</button>
         </article>
 
         <!-- Ещё пример -->
         <article class="basket-item">
           <input type="checkbox" id="cat-2" class="basket-check">
           <figure class="basket-preview">
-            <img src="cats/custom-cat2.png" alt="Сконструированная кошка №2">
+            <img src="assets/images/cats/custom-cat2.png" alt="Сконструированная кошка №2">
             <figcaption class="basket-name">Пушинка</figcaption>
           </figure>
 
@@ -75,14 +80,14 @@
             <p><strong>10 500 ₽</strong></p>
           </div>
 
-          <button class="basket-remove" aria-label="Удалить из корзины">&times;</button>
+          <button class="btn btn-danger btn-icon basket-remove" aria-label="Удалить из корзины">&times;</button>
         </article>
       </section>
 
       <section class="basket-summary">
         <h2 class="visually-hidden">Итоговая сумма</h2>
         <p class="basket-total">Итого: <strong>23 400 ₽</strong></p>
-        <button class="btn-checkout">Оформить заказ</button>
+        <button class="btn btn-success btn-checkout">Оформить заказ</button>
       </section>
     </main>
 
@@ -95,16 +100,17 @@
         <ul class="footer-socials">
           <li>
             <a href="https://t.me/yourcatfactory" target="_blank" rel="noopener noreferrer">
-              <img src="icons/telegram.png" alt="Telegram">
+              <img src="assets/images/icons/telegram.png" alt="Telegram">
             </a>
           </li>
           <li>
             <a href="https://vk.com/yourcatfactory" target="_blank" rel="noopener noreferrer">
-              <img src="icons/vk.png" alt="ВКонтакте">
+              <img src="assets/images/icons/vk.png" alt="ВКонтакте">
             </a>
           </li>
         </ul>
       </div>
     </footer>
+    <script type="module" src="src/main.js"></script>
   </body>
 </html>

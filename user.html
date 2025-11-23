@@ -2,15 +2,20 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Профиль пользователя — Креативная киска</title>
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/components/button.css">
+    <link rel="stylesheet" href="styles/components/form.css">
+    <link rel="stylesheet" href="styles/components/card.css">
     <link rel="stylesheet" href="styles/style.css">
-	<link rel="stylesheet" href="styles/user.css">
+    <link rel="stylesheet" href="styles/user.css">
   </head>
-  <body>
+  <body class="user-page">
     <header class="main-header">
       <nav class="main-navigation">
-        <a href="index.html"><img src="logo.png" alt="Наш логотип"></a>
+        <a href="index.html"><img src="assets/images/logo.png" alt="Наш логотип"></a>
         <ul>
           <li class="menu-user"><a href="user.html" class="active">Профиль</a></li>
           <li class="menu-basket"><a href="basket.html">В корзину</a></li>
@@ -49,8 +54,8 @@
           </div>
 
           <div class="user-actions">
-            <button type="submit" class="btn-save">Сохранить изменения</button>
-            <button type="button" class="btn-logout">Выйти</button>
+            <button type="submit" class="btn btn-primary btn-save">Сохранить изменения</button>
+            <button type="button" class="btn btn-neutral btn-logout">Выйти</button>
           </div>
         </form>
       </section>
@@ -61,7 +66,7 @@
 
         <ul class="order-list">
           <li class="order-item">
-            <img src="cats/custom-cat1.png" alt="Мурчелло">
+            <img src="assets/images/cats/custom-cat1.png" alt="Мурчелло">
             <div>
               <p><strong>Мурчелло</strong> — гордый и преданный.</p>
               <p><small>Заказ от 15.09.2025 — Статус: доставлен</small></p>
@@ -69,7 +74,7 @@
           </li>
 
           <li class="order-item">
-            <img src="cats/custom-cat2.png" alt="Пушинка">
+            <img src="assets/images/cats/custom-cat2.png" alt="Пушинка">
             <div>
               <p><strong>Пушинка</strong> — белоснежное воплощение мягкости.</p>
               <p><small>Заказ от 25.09.2025 — Статус: в пути</small></p>
@@ -88,16 +93,17 @@
         <ul class="footer-socials">
           <li>
             <a href="https://t.me/yourcatfactory" target="_blank" rel="noopener noreferrer">
-              <img src="icons/telegram.png" alt="Telegram">
+              <img src="assets/images/icons/telegram.png" alt="Telegram">
             </a>
           </li>
           <li>
             <a href="https://vk.com/yourcatfactory" target="_blank" rel="noopener noreferrer">
-              <img src="icons/vk.png" alt="ВКонтакте">
+              <img src="assets/images/icons/vk.png" alt="ВКонтакте">
             </a>
           </li>
         </ul>
       </div>
     </footer>
+    <script type="module" src="src/main.js"></script>
   </body>
 </html>

@@ -1,0 +1,125 @@
+.main-header {
+  background-color: var(--color-primary);
+  padding: var(--spacing-md) 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.main-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+  flex-wrap: wrap;
+}
+
+.main-navigation img {
+  height: 50px;
+  width: auto;
+}
+
+.main-navigation ul {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-xl);
+  padding: 0;
+  margin: 0;
+}
+
+.main-navigation a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: opacity var(--transition-slow);
+}
+
+.main-navigation a:hover {
+  opacity: 0.8;
+}
+
+.main-navigation a.active {
+  text-decoration: underline;
+}
+
+.main-content {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.main-title {
+  color: var(--color-primary);
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+.main-description {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.6;
+  padding: 0 var(--spacing-md);
+}
+
+.main-footer {
+  background-color: var(--color-footer);
+  color: white;
+  padding: var(--spacing-xl) 0;
+  margin-top: auto;
+}
+
+.footer-inner {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+  text-align: center;
+}
+
+.footer-tagline {
+  margin: var(--spacing-md) 0;
+}
+
+.footer-socials {
+  display: flex;
+  list-style: none;
+  gap: var(--spacing-md);
+  justify-content: center;
+  margin-top: var(--spacing-md);
+}
+
+.footer-socials a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-socials img {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 650px) {
+  .main-navigation {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .main-navigation ul {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-tagline {
+    margin: 10px 0;
+  }
+
+  .main-title {
+    font-size: 1.5em;
+  }
+}
+
+
