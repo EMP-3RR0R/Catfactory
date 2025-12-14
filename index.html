@@ -5,7 +5,7 @@
     <title>Котозавод «Креативная киска»</title>
     <link rel="stylesheet" href="styles/style.css">
 	<link rel="stylesheet" href="styles/index.css">
-  </head>
+	  </head>
   <body>
     <header class="main-header">
       <nav class="main-navigation">
@@ -317,7 +317,7 @@
 					</g>
 
 					<!-- ВАРИАНТ 2: Короткий хвост (закомментирован, можно включить через JS) -->
-					<g id="tailShort" class="tail tail-short" style="display: none;">
+					<g id="tailShort" class="tail tail-short hidden">
 					<path 
 						id="tailShortPath" 
 						class="tail-path"
@@ -330,7 +330,7 @@
 					</g>
 
 					<!-- ВАРИАНТ 3: Нет хвоста -->
-					<g id="tailNone" class="tail tail-none" style="display: none;"></g>
+					<g id="tailNone" class="tail tail-none hidden"></g>
 
 					<!-- ========== ГОЛОВА ========== -->
 					<g id="head" class="head">
@@ -389,7 +389,7 @@
 					</g>
 
 					<!-- ВАРИАНТ 2: Ушки с кисточками (закомментирован) -->
-					<g id="earsTufted" class="ears ears-tufted" style="display: none;">
+					<g id="earsTufted" class="ears ears-tufted hidden">
 					<path 
 						id="leftEarTufted" 
 						class="ear left-ear"
@@ -429,7 +429,7 @@
 					</g>
 
 					<!-- ВАРИАНТ 3: Вислоухие ушки (закомментирован) -->
-					<g id="earsFolded" class="ears ears-folded" style="display: none;">
+					<g id="earsFolded" class="ears ears-folded hidden">
 					<path 
 						id="leftEarFolded" 
 						class="ear left-ear"
@@ -449,7 +449,7 @@
 					</g>
 
 					<!-- ВАРИАНТ 4: Безухие (закомментирован) -->
-					<g id="earsNone" class="ears ears-none" style="display: none;"></g>
+					<g id="earsNone" class="ears ears-none hidden"></g>
 
 					<!-- ========== ГЛАЗА ========== -->
 					<!-- Варианты глаз: круглые, хитрые, удовлетворённые -->
@@ -502,7 +502,7 @@
 					</g>
 
 					<!-- ВАРИАНТ 2: Хитрые глаза (закомментирован) -->
-					<g id="eyesSly" class="eyes eyes-sly" style="display: none;">
+					<g id="eyesSly" class="eyes eyes-sly hidden">
 					<g id="leftEyeSly" class="eye left-eye">
 						<ellipse 
 						id="leftEyeSlitWhite" 
@@ -550,7 +550,7 @@
 					</g>
 
 					<!-- ВАРИАНТ 3: Удовлетворённые глаза (закомментирован) -->
-					<g id="eyesHappy" class="eyes eyes-happy" style="display: none;">
+					<g id="eyesHappy" class="eyes eyes-happy hidden">
 					<path 
 						id="leftEyeHappy" 
 						class="eye left-eye"
@@ -587,7 +587,7 @@
 					</g>
 
 					<!-- ВАРИАНТ 2: Круглый нос (закомментирован) -->
-					<g id="noseRound" class="nose nose-round" style="display: none;">
+					<g id="noseRound" class="nose nose-round hidden">
 					<circle 
 						id="noseRoundPath" 
 						class="nose-path"
@@ -617,7 +617,7 @@
 					</g>
 
 					<!-- ВАРИАНТ 2: Улыбка (закомментирован) -->
-					<g id="mouthSmile" class="mouth mouth-smile" style="display: none;">
+					<g id="mouthSmile" class="mouth mouth-smile hidden">
 					<path 
 						id="mouthSmilePath" 
 						class="mouth-path"
@@ -630,7 +630,7 @@
 					</g>
 
 					<!-- ВАРИАНТ 3: Грустный рот (закомментирован) -->
-					<g id="mouthSad" class="mouth mouth-sad" style="display: none;">
+					<g id="mouthSad" class="mouth mouth-sad hidden">
 					<path 
 						id="mouthSadPath" 
 						class="mouth-path"
@@ -711,44 +711,159 @@
 		   </div>
 		  </figure>
 		  <form class="constructor-form" action="#" method="post">
-		    <fieldset>
-			  <legend>Цвета</legend>
-			  <label for="fur-color">Цвет шерсти</label>
-			  <input type="color" id="fur-color" name="furColor" value="#f5cba7">
+		    <div class="form-step" data-step="0">
+			  <fieldset>
+			    <legend>Начало</legend>
+			    <p>Готовы собрать своего котика? Нажмите, чтобы начать.</p>
+						<div class="start-actions">
+							<button type="button" class="btn-start">Начать сборку</button>
+						</div>
+			  </fieldset>
+			</div>
+		    <div class="form-step" data-step="1">
+			  <fieldset>
+			    <legend>Ушки</legend>
+			    <label for="ears">Тип ушек</label>
+			    <select id="ears" name="ears">
+			      <option value="normal">Обычные</option>
+			      <option value="tufted">Обычные с кисточками</option>
+			      <option value="folded">Вислоухий</option>
+			      <option value="none">Безухий</option>
+			    </select>
+			  </fieldset>
+		    </div>
 
-			  <label for="ears-color">Цвет ушек</label>
-			  <input type="color" id="ears-color" name="earsColor" value="#d98880">
+		    <div class="form-step" data-step="2">
+			  <fieldset>
+			    <legend>Глаза</legend>
+			    <label for="eyes">Форма глаз</label>
+			    <select id="eyes" name="eyes">
+			      <option value="round">Круглые</option>
+			      <option value="sly">Хитрые</option>
+			      <option value="happy">Удовлетворённые</option>
+			    </select>
+			  </fieldset>
+		    </div>
 
-			  <label for="tail-color">Цвет хвоста</label>
-			  <input type="color" id="tail-color" name="tailColor" value="#a04000">
-		    </fieldset>
+		    <div class="form-step" data-step="3">
+			  <fieldset>
+			    <legend>Нос</legend>
+			    <label for="nose">Форма носа</label>
+			    <select id="nose" name="nose">
+			      <option value="triangle">Треугольник</option>
+			      <option value="round">Круг</option>
+			    </select>
+			  </fieldset>
+		    </div>
 
-		    <fieldset>
-			  <legend>Особенности</legend>
-			  <label for="pattern">Раскраска</label>
-			  <select id="pattern" name="pattern">
-			    <option value="plain">Однотонный</option>
-			    <option value="striped">Полосатый</option>
-			    <option value="spotted">Пятнистый</option>
-			  </select>
+		    <div class="form-step" data-step="4">
+			  <fieldset>
+			    <legend>Рот</legend>
+			    <label for="mouth">Тип рта</label>
+			    <select id="mouth" name="mouth">
+			      <option value="neutral">Нейтральный</option>
+			      <option value="smile">Улыбка</option>
+			      <option value="sad">Грустный</option>
+			    </select>
+			  </fieldset>
+		    </div>
 
-			  <label for="eyes-color">Цвет глаз</label>
-			  <select id="eyes-color" name="eyesColor">
-			    <option value="green">Зелёные</option>
-			    <option value="blue">Голубые</option>
-			    <option value="amber">Жёлтые</option>
-			  </select>
+		    <div class="form-step" data-step="5">
+			  <fieldset>
+			    <legend>Хвост</legend>
+			    <label for="tail">Тип хвоста</label>
+			    <select id="tail" name="tail">
+			      <option value="long">Длинный</option>
+			      <option value="short">Короткий</option>
+			      <option value="none">Нет хвоста</option>
+			    </select>
 
-			  <label for="temper">Характер</label>
-			  <select id="temper" name="temper">
-			    <option value="playful">Игривый</option>
-			    <option value="calm">Спокойный</option>
-			    <option value="proud">Гордый</option>
-			  </select>
-		    </fieldset>
-		    <div class="constructor-actions">
-			  <button type="reset" class="btn-reset">Сбросить</button>
-		  	  <button type="submit" class="btn-add">В корзину</button>
+			    <label for="tail-pattern">Тип раскраски хвоста</label>
+			    <select id="tail-pattern" name="tailPattern">
+			      <option value="plain">Однотонный</option>
+			      <option value="striped">Полосатый</option>
+			    </select>
+			  </fieldset>
+		    </div>
+
+		    <div class="form-step" data-step="6">
+			  <fieldset>
+			    <legend>Цвета</legend>
+				<div class="blocks-colors">
+				  <div>
+				    <label for="fur-color">Цвет шерсти</label>
+				    <input type="color" title="Нажмите сюда" id="fur-color" name="furColor" value="#f5cba7">
+				  </div>
+				  <div>
+				    <label for="ears-color">Цвет ушек</label>
+				    <input type="color" title="Нажмите сюда" id="ears-color" name="earsColor" value="#d98880">
+				  </div>
+				  <div>
+				    <label for="tail-color">Цвет хвоста</label>
+				    <input type="color" title="Нажмите сюда" id="tail-color" name="tailColor" value="#a04000">
+				  </div>
+				  <div>
+				    <label for="stripes-color">Цвет полос</label>
+				    <input type="color" id="stripes-color" name="stripesColor" value="#000000">
+				  </div>
+				  <div>
+				    <label for="belly-color">Цвет животика</label>
+				    <input type="color" id="belly-color" name="bellyColor" value="#ffffff">
+				  </div>
+				  <div>
+				    <label for="paws-color">Цвет лапок</label>
+				    <input type="color" id="paws-color" name="pawsColor" value="#f5cba7">
+				  </div>
+				  <div>
+				    <label for="tapochki-color">Цвет "тапочек"</label>
+				    <input type="color" id="tapochki-color" name="tapochkiColor" value="#ffffff">
+				  </div>
+				  <div>
+				    <label for="nose-color">Цвет носика</label>
+				    <input type="color" id="nose-color" name="noseColor" value="#d98880">
+				  </div>
+				</div>
+			  </fieldset>
+		    </div>
+
+		    <div class="form-step" data-step="7">
+			  <fieldset>
+			    <legend>Обзор</legend>
+			    <div id="summary-preview" class="summary-preview" aria-hidden="false"></div>
+			    <ul id="summary-list" class="summary-list">
+			      <li><strong>Ушки:</strong> <span id="summary-ears"></span></li>
+			      <li><strong>Глаза:</strong> <span id="summary-eyes"></span></li>
+			      <li><strong>Нос:</strong> <span id="summary-nose"></span></li>
+			      <li><strong>Рот:</strong> <span id="summary-mouth"></span></li>
+			      <li><strong>Хвост:</strong> <span id="summary-tail"></span></li>
+			      <li><strong>Тип раскраски хвоста:</strong> <span id="summary-tail-pattern"></span></li>
+			      <li><strong>Цвета:</strong>
+			        <ul>
+			          <li>Шерсть: <span id="summary-furColor"></span></li>
+			          <li>Ушки: <span id="summary-earsColor"></span></li>
+			          <li>Хвост: <span id="summary-tailColor"></span></li>
+			          <li>Полосы: <span id="summary-stripesColor"></span></li>
+			          <li>Животик: <span id="summary-bellyColor"></span></li>
+			          <li>Лапки: <span id="summary-pawsColor"></span></li>
+			          <li>"Тапочки": <span id="summary-tapochkiColor"></span></li>
+			          <li>Носик: <span id="summary-noseColor"></span></li>
+			        </ul>
+			      </li>
+			    </ul>
+
+			    <div id="summary-pricing" class="summary-pricing">
+			      <h4>Стоимость</h4>
+			      <ul id="price-breakdown" class="price-breakdown"></ul>
+			      <div id="summary-total" class="summary-total" aria-live="polite"></div>
+			    </div>
+			  </fieldset>
+		    </div>
+
+						<div class="form-navigation">
+		      <button type="button" class="btn-prev">Назад</button>
+		      <button type="button" class="btn-next">Далее</button>
+							<button type="button" class="btn-exit hidden">Выйти</button>
+			  <button type="submit" class="btn-submit hidden">Сохранить в корзину</button>
 		    </div>
 		  </form>
 	    </div>
@@ -810,5 +925,7 @@
 		</ul>
 	  </div>
 	</footer>
+
+	<script src="scripts/form-navigation.js"></script>
   </body>
 </html>

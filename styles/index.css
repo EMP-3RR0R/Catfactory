@@ -49,12 +49,13 @@
 
 /* Форма конструктора */
 .constructor-form {
-  flex: 1;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 16px rgba(255,107,53,0.13);
   padding: 2.1rem 1.5rem;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   gap: 1.2rem;
   max-width: 400px;
@@ -156,6 +157,19 @@
   background: #ff935f;
 }
 
+.btn-prev, .btn-next, .btn-submit {
+  border-radius: 7px;
+  padding: 0.6rem 0.8rem;
+  border: none;
+  font-weight: 600;
+  background: #ff6b35;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-prev:hover, .btn-next:hover, .btn-submit:hover {
+  background: #ff935f;
+}
 
 /* ----------- ФОРМА ЗАЯВКИ ------------- */
 .feedback {
@@ -617,4 +631,67 @@
     left: auto;
     right: -40px;
   }
+}
+
+.form-step {
+  display: none;
+  /* Можно скорректировать min-height под желаемый размер */
+  box-sizing: border-box;
+}
+
+.form-step fieldset {
+  min-height: 500px;
+  min-width: 300px;
+}
+
+.form-step.active {
+  display: block;
+}
+
+.blocks-colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem 1.2rem;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.blocks-colors label {
+  width: 100%;
+  margin-bottom: 0.2rem;
+}
+
+.blocks-colors > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 45%;
+  min-width: 0;
+  max-width: 48%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .blocks-colors {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .blocks-colors > div {
+    max-width: 100%;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.option-price {
+  margin-left: 0.6rem;
+  font-weight: 600;
+  color: #1a7f1a;
+  background: #e6f7e6;
+  padding: 0.12rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  display: inline-block;
 }

@@ -27,62 +27,17 @@
 
       <section class="basket-items" aria-labelledby="basket-title">
         <h2 id="basket-title" class="visually-hidden">Список товаров в корзине</h2>
-
-        <!-- Пример одного элемента корзины -->
-        <article class="basket-item">
-          <input type="checkbox" id="cat-1" class="basket-check">
-          <figure class="basket-preview">
-            <img src="cats/custom-cat1.png" alt="Сконструированный кот №1">
-            <figcaption class="basket-name">Мурчелло</figcaption>
-          </figure>
-
-          <div class="basket-info">
-            <!-- <h3 class="basket-name">Мурчелло</h3> -->
-            <ul class="basket-characteristics">
-              <li><strong>Цвет шерсти:</strong> персиковый</li>
-              <li><strong>Цвет глаз:</strong> зелёный</li>
-              <li><strong>Характер:</strong> гордый, но ласковый</li>
-              <li><strong>Раскраска:</strong> полосатая</li>
-            </ul>
-          </div>
-
-          <div class="basket-price">
-            <p><strong>12 900 ₽</strong></p>
-          </div>
-
-          <button class="basket-remove" aria-label="Удалить из корзины">&times;</button>
-        </article>
-
-        <!-- Ещё пример -->
-        <article class="basket-item">
-          <input type="checkbox" id="cat-2" class="basket-check">
-          <figure class="basket-preview">
-            <img src="cats/custom-cat2.png" alt="Сконструированная кошка №2">
-            <figcaption class="basket-name">Пушинка</figcaption>
-          </figure>
-
-          <div class="basket-info">
-            <!-- <h3 class="basket-name">Пушинка</h3> -->
-            <ul class="basket-characteristics">
-              <li><strong>Цвет шерсти:</strong> белый</li>
-              <li><strong>Цвет глаз:</strong> голубой</li>
-              <li><strong>Характер:</strong> игривая</li>
-              <li><strong>Раскраска:</strong> однотонная</li>
-            </ul>
-          </div>
-
-          <div class="basket-price">
-            <p><strong>10 500 ₽</strong></p>
-          </div>
-
-          <button class="basket-remove" aria-label="Удалить из корзины">&times;</button>
-        </article>
+        <div id="basket-empty" class="basket-empty">Корзина пуста. Перейдите к конструктору, чтобы добавить котика.</div>
+        <div id="basket-list" class="basket-list"></div>
       </section>
 
       <section class="basket-summary">
         <h2 class="visually-hidden">Итоговая сумма</h2>
-        <p class="basket-total">Итого: <strong>23 400 ₽</strong></p>
-        <button class="btn-checkout">Оформить заказ</button>
+        <p id="basket-total" class="basket-total"></p>
+        <div class="basket-actions">
+          <button id="basket-clear" class="btn-secondary" type="button">Очистить корзину</button>
+          <button class="btn-checkout" type="button">Оформить заказ</button>
+        </div>
       </section>
     </main>
 
@@ -106,5 +61,6 @@
         </ul>
       </div>
     </footer>
+    <script src="scripts/basket.js"></script>
   </body>
 </html>
