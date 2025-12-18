@@ -975,7 +975,36 @@
 	  </div>
 	</footer>
 
+	<!-- Окно для подтверждения заявки -->
+<div id="feedback-modal" class="modal" aria-hidden="true" aria-labelledby="modal-title">
+  <div class="modal__overlay"></div>
+  <div class="modal__content">
+    <button class="modal__close" aria-label="Закрыть окно">×</button>
+    
+    <h2 id="modal-title" class="modal__title">Заявка оставлена, уже звоним Вам!</h2>
+    
+    <div class="modal__icon">🐱</div>
+    
+    <div class="modal__info">
+      <p><strong>Ваши данные:</strong></p>
+      <ul class="modal__data">
+        <li><strong>Имя:</strong> <span id="modal-name"></span></li>
+        <li><strong>Телефон:</strong> <span id="modal-phone"></span></li>
+        <li><strong>E-mail:</strong> <span id="modal-email"></span></li>
+      </ul>
+    </div>
+    
+    <p class="modal__message">
+      Скоро наш менеджер свяжется с вами, чтобы обсудить детали. 
+      Котики уже в ожидании нового хозяина!
+    </p>
+    
+    <button class="modal__button" id="modal-close-btn">Отлично!</button>
+  </div>
+</div>
+
 	<script src="scripts/form-navigation.js"></script>
 	<script src="scripts/slider.js"></script>
+	<script src="scripts/feedback.js"></script>
   </body>
 </html>
