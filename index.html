@@ -57,8 +57,10 @@
 
       <section class="reviews">
 		<h2 class="reviews-title">Отзывы счастливых подданных</h2>
+		<button class="arrow-left" aria-label="Предыдущий отзыв">←</button>
+          <button class="arrow-right" aria-label="Следующий отзыв">→</button>
+		
 		<div class="reviews-container">
-		  <button class="arrow-left" aria-label="Предыдущий отзыв">←</button>
 
           <article class="review-card">
 		    <h3 class="visually-hidden">Отзыв Бобби</h3>
@@ -95,7 +97,54 @@
 		    </blockquote>
 		  </article>
 
-          <button class="arrow-right" aria-label="Следующий отзыв">→</button>
+          <article class="review-card">
+		    <h3 class="visually-hidden">Отзыв Марии</h3>
+		    <img class="review-image" src="cats/maria-cat.jpeg" alt="Чёрно-белый кот">
+		    <blockquote class="review-block">
+			  <cite class="review-name">Мария К.</cite>
+			  <q class="review-quote">
+			    Мой котик так интеллигентен, что требует чай в пять часов. 
+			    Иногда кажется, что он воспитаннее некоторых моих коллег.
+			  </q>
+		    </blockquote>
+		  </article>
+		  
+          <article class="review-card">
+		    <h3 class="visually-hidden">Отзыв Дмитрия</h3>
+		    <img class="review-image" src="cats/dmitry-cat.jpeg" alt="Серый полосатый кот">
+		    <blockquote class="review-block">
+			  <cite class="review-name">Дмитрий П.</cite>
+			  <q class="review-quote">
+			    Кот оказался прекрасным начальником отдела сна. 
+			    Все совещания теперь проходят исключительно на диване.
+			  </q>
+		    </blockquote>
+		  </article>
+
+          <article class="review-card">
+		    <h3 class="visually-hidden">Отзыв Алины</h3>
+		    <img class="review-image" src="cats/alina-cat.jpeg" alt="Белый пушистый кот">
+		    <blockquote class="review-block">
+			  <cite class="review-name">Алина С.</cite>
+			  <q class="review-quote">
+			    Пушистик за неделю научился открывать холодильник. 
+			    Теперь мы проводим совместные тренинги по безопасности продуктов.
+			  </q>
+		    </blockquote>
+		  </article>
+
+          <article class="review-card">
+		    <h3 class="visually-hidden">Отзыв Владимира</h3>
+		    <img class="review-image" src="cats/vladimir-cat.jpeg" alt="Рыжий кот с серьёзным взглядом">
+		    <blockquote class="review-block">
+			  <cite class="review-name">Владимир Л.</cite>
+			  <q class="review-quote">
+			    Кот-философ. Целыми днями смотрит в окно и размышляет. 
+			    Иногда кажется, что вот-вот начнёт читать лекции.
+			  </q>
+		    </blockquote>
+		  </article>
+
 		</div>
 	  </section>
 
@@ -927,5 +976,6 @@
 	</footer>
 
 	<script src="scripts/form-navigation.js"></script>
+	<script src="scripts/slider.js"></script>
   </body>
 </html>

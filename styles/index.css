@@ -345,32 +345,36 @@
 
 .reviews {
   position: relative;
-  padding: 2rem;
+  padding: 3rem 4rem;
   background-color: #fff8f0;
   border-radius: 12px;
   margin: 4rem auto;
   max-width: 1200px;
-  display: block;
+  overflow: hidden;
+  min-height: 500px; /* Фиксированная высота чтобы не прыгало */
 }
 
 .reviews-title {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   color: #ff6b35;
   font-size: 2rem;
   width: 100%;
-  display: block;
 }
 
+/* КОНТЕЙНЕР ДЛЯ КАРТОЧЕК */
 .reviews-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: 2rem;
+  width: 100%;
   position: relative;
 }
 
+/* КАРТОЧКА ОТЗЫВА */
 .review-card {
-  display: flex;
+  flex: 0 0 calc(33.333% - 1.33rem); /* 3 карточки по умолчанию */
+  min-width: calc(33.333% - 1.33rem);
+  display: none; /* По умолчанию все скрыты */
   flex-direction: column;
   background: white;
   border-radius: 12px;
@@ -378,8 +382,17 @@
   box-shadow: 0 4px 12px rgba(255,107,53,0.15);
   border-top: 4px solid #ff6b35;
   min-height: 400px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
+/* КАРТОЧКА, КОТОРАЯ ПОКАЗЫВАЕТСЯ */
+.review-card.active {
+  display: flex;
+  opacity: 1;
+}
+
+/* ИЗОБРАЖЕНИЕ В КАРТОЧКЕ */
 .review-image {
   width: 100%;
   height: 200px;
@@ -389,6 +402,7 @@
   margin-bottom: 1.5rem;
 }
 
+/* ТЕКСТ ОТЗЫВА */
 .review-block {
   text-align: center;
   flex: 1;
@@ -412,13 +426,15 @@
   font-size: 1.1rem;
 }
 
+/* СТРЕЛКИ - ФИКСИРОВАННЫЕ, НЕ ДВИГАЮТСЯ */
 .arrow-left,
 .arrow-right {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
-  padding: 1rem 1.2rem;
+  width: 50px;
+  height: 50px;
   font-size: 1.5rem;
   background: #ff6b35;
   color: white;
@@ -427,14 +443,17 @@
   cursor: pointer;
   transition: background-color 0.3s;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .arrow-left {
-  left: -60px;
+  left: 15px;
 }
 
 .arrow-right {
-  right: -60px;
+  right: 15px;
 }
 
 .arrow-left:hover,
@@ -444,192 +463,92 @@
 
 /* ===== АДАПТИВНОСТЬ ===== */
 
-@media (max-width: 1100px) {
-  .jobs {
-    grid-template-columns: 1fr;
-    max-width: none;
-    padding: 2rem 1rem;
-    margin: 0;
-    background-color: #fff8f0;
-  }
-  
-  .pussycat-card {
-    min-height: 700px;
-    padding: 2.5rem;
-    max-width: 400px;
-    margin: 0 auto;
-    border-radius: 12px;
-    border-top: 4px solid #ff6b35;
-  }
-  
-  .pussycat-image {
-    height: 350px;
-    border-radius: 8px;
-  }
-  
-  .pussycat-name {
-    font-size: 2rem;
-  }
-  
-  .pussycat-description {
-    font-size: 1.3rem;
-    line-height: 1.7;
-  }
-  
-  .reviews {
-    max-width: none;
-    padding: 2rem 1rem;
-    margin: 4rem 0;
-  }
-  
-  .reviews-container {
-    grid-template-columns: 1fr;
-    max-width: 400px;
-    margin: 0 auto;
-    position: relative;
-  }
-  
-  .review-card {
-    min-height: 450px;
-    padding: 2rem;
-  }
-  
-  .review-image {
-    height: 220px;
-  }
-  
-  .review-name {
-    font-size: 1.4rem;
-  }
-  
-  .review-quote {
-    font-size: 1.2rem;
-  }
-  
-  .arrow-left,
-  .arrow-right {
-    top: 50%;
-    transform: translateY(-50%);
-    left: -80px;
-    right: auto;
-  }
-  
-  .arrow-right {
-    left: auto;
-    right: -80px;
-  }
-}
-
+/* ДЛЯ ПЛАНШЕТОВ (2 карточки) */
 @media (max-width: 900px) {
-  .constructor-body {
-    flex-direction: column;
-    gap: 2rem;
+  .reviews {
+    padding: 3rem 3rem;
   }
   
-  .constructor-form {
-    max-width: 500px;
-    width: 100%;
+  .review-card {
+    flex: 0 0 calc(50% - 1rem); /* 2 карточки */
+    min-width: calc(50% - 1rem);
+  }
+  
+  .arrow-left {
+    left: 10px;
+  }
+  
+  .arrow-right {
+    right: 10px;
   }
 }
 
-@media (max-width: 700px) {
-  .jobs {
-    gap: 1.5rem;
-    padding: 1.5rem 0.5rem;
-  }
-  
-  .pussycat-card {
-    min-height: 650px;
-    padding: 2rem;
-    max-width: 350px;
-  }
-  
-  .pussycat-image {
-    height: 300px;
-  }
-  
-  .pussycat-name {
-    font-size: 1.8rem;
-  }
-  
-  .pussycat-description {
-    font-size: 1.2rem;
-  }
-  
+/* ДЛЯ МОБИЛЬНЫХ (1 карточка) */
+@media (max-width: 600px) {
   .reviews {
-    padding: 1.5rem 0.5rem;
+    padding: 2rem 2.5rem;
+    margin: 3rem 0.5rem;
+    min-height: 450px;
+  }
+  
+  .reviews-title {
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
   }
   
   .reviews-container {
     gap: 1.5rem;
-    max-width: 350px;
   }
   
   .review-card {
-    min-height: 420px;
+    flex: 0 0 100%; /* 1 карточка */
+    min-width: 100%;
+    min-height: 350px;
     padding: 1.5rem;
   }
   
   .review-image {
-    height: 200px;
+    height: 180px;
   }
   
   .arrow-left,
   .arrow-right {
-    padding: 0.8rem 1rem;
-    font-size: 1.3rem;
-    left: -60px;
-    right: auto;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .arrow-left {
+    left: 5px;
   }
   
   .arrow-right {
-    left: auto;
-    right: -60px;
-  }
-  
-  .constructor {
-    padding: 1rem 0.5rem;
-  }
-  
-  .constructor-title {
-    font-size: 1.5rem;
-  }
-  
-  .constructor-form {
-    padding: 1.5rem 1rem;
-    max-width: 100%;
-  }
-  
-  .constructor-cat {
-    max-width: 280px;
-  }
-  
-  .feedback {
-    padding: 1.2rem 0.3rem;
-    max-width: 97vw;
-  }
-  
-  .feedback-title {
-    font-size: 1.1rem;
-  }
-  
-  .feedback-form {
-    max-width: 100%;
-    padding: 1rem 0.3rem;
-    min-width: 0;
+    right: 5px;
   }
 }
 
-@media (max-width: 500px) {
-  .arrow-left,
-  .arrow-right {
-    left: -40px;
-    right: auto;
+/* ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ */
+@media (max-width: 400px) {
+  .reviews {
+    padding: 2rem 1.5rem;
+    min-height: 400px;
   }
   
-  .arrow-right {
-    left: auto;
-    right: -40px;
+  .review-card {
+    min-height: 320px;
+    padding: 1.2rem;
+  }
+  
+  .review-image {
+    height: 150px;
+  }
+  
+  .review-name {
+    font-size: 1.2rem;
+  }
+  
+  .review-quote {
+    font-size: 1rem;
   }
 }
 
