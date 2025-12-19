@@ -132,6 +132,45 @@ body:not(.profile-page) .main-content {
   color: #bfbfbf;
 }
 
+.status-processing {
+  color: #ff6b35;
+  font-weight: bold;
+}
+
+.status-shipping {
+  color: #3498db;
+  font-weight: bold;
+}
+
+.status-delivered {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.order-cat-preview {
+  min-width: 80px;
+  margin-right: 1rem;
+}
+
+.order-cat-preview svg {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  background: #fff8f0;
+  padding: 5px;
+}
+
+.order-details {
+  margin-top: 0.5rem;
+  color: #666;
+}
+
+.order-address {
+  margin-top: 0.3rem;
+  color: #888;
+  font-size: 0.9em;
+}
+
 @media (max-width: 900px) {
   .main-content {
     grid-template-columns: 1fr;

@@ -627,5 +627,91 @@ document.addEventListener('DOMContentLoaded', () => {
 	  });
 	}
 
+	function showOrderSuccess(orderData) {
+  const successDiv = document.createElement('div');
+  successDiv.style.cssText = `
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    z-index: 9999;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    border: 4px solid #4CAF50;
+  `;
+  
+  successDiv.innerHTML = `
+    <div style="font-size: 3rem; color: #4CAF50; margin-bottom: 1rem;">✓</div>
+    <h2 style="color: #4CAF50; margin-bottom: 1rem;">Заказ успешно оформлен!</h2>
+    <p>Спасибо за заказ, <strong>${orderData.name}</strong>!</p>
+    <div style="background: #f9f9f9; padding: 1rem; border-radius: 8px; margin: 1rem 0; text-align: left;">
+      <p><strong>Номер заказа:</strong> ${orderData.orderId}</p>
+      <p><strong>Сумма:</strong> ${orderData.total} ₽</p>
+    </div>
+    <button id="close-success-btn" style="
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 30px;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    ">Отлично!</button>
+  `;
+  
+  document.body.appendChild(successDiv);
+  
+  saveOrderToProfile(orderData);
+  
+  document.getElementById('close-success-btn').addEventListener('click', () => {
+    document.body.removeChild(successDiv);
+  });
+  
+  successDiv.addEventListener('click', (e) => {
+    if (e.target === successDiv) {
+      document.body.removeChild(successDiv);
+    }
+  });
+}
+
+function saveOrderToProfile(orderData) {
+  try {
+    const orderWithCatNames = {
+      ...orderData,
+      items: orderData.items.map(item => ({
+        ...item,
+        catName: generateCatName()
+      }))
+    };
+    
+    const existingOrders = JSON.parse(localStorage.getItem('userOrders') || '[]');
+    
+    existingOrders.push(orderWithCatNames);
+    
+    localStorage.setItem('userOrders', JSON.stringify(existingOrders));
+    
+    console.log('Заказ сохранен в профиль с именами котиков:', orderData.orderId);
+  } catch (error) {
+    console.error('Ошибка при сохранении заказа:', error);
+  }
+}
+
+function generateCatName() {
+  const names = [
+    'Мурзик', 'Барсик', 'Васька', 'Рыжик', 'Снежок', 'Пушок', 'Кузя', 'Бандит',
+    'Гарфилд', 'Симба', 'Луна', 'Оскар', 'Зефир', 'Маркиз', 'Персик', 'Шерлок',
+    'Гудини', 'Феня', 'Цезарь', 'Боня', 'Чарли', 'Лексус', 'Базилио', 'Матроскин',
+    'Мурчелло', 'Пушинка', 'Молния', 'Лапочка', 'Бобби', 'Мурка', 'Василиса',
+    'Том', 'Джерри', 'Леопольд', 'Масяня', 'Кекс', 'Бублик', 'Пончик', 'Батон'
+  ];
+  return names[Math.floor(Math.random() * names.length)];
+}
+
 	render();
 }); 
