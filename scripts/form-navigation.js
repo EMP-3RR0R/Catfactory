@@ -448,7 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { input: '#fur-color', targets: ['#body', '#bodyMain'] },
     { input: '#ears-color', targets: ['#earsNormal', '#earsTufted', '#earsFolded', '#earsNone'] },
     { input: '#tail-color', targets: ['#tailLong', '#tailShort', '#tailNone'] },
-    { input: '#stripes-color', targets: ['#stripes', '#stripe1Left', '#stripe2Left', '#stripe1Right', '#stripe2Right'] },
+    { input: '#stripes-color', targets: ['#stripes', '#stripe1Left', '#stripe2Left', '#stripe1Right', '#stripe2Right', '#tailStriped', '#tailStripe1', '#tailStripe2', '#tailStripe3'] },
     { input: '#belly-color', targets: ['#belly', '#bellyMain'] },
     { input: '#paws-color', targets: ['#backLeftPaw', '#backRightPaw', '#frontLeftPaw', '#frontRightPaw'] },
     { input: '#tapochki-color', targets: ['#backLeftTapochka', '#backRightTapochka', '#frontLeftTapochka', '#frontRightTapochka'] },
