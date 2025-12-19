@@ -1,3 +1,12 @@
+let Storage;
+try {
+  if (typeof window.Storage !== 'undefined') {
+    Storage = window.Storage;
+  }
+} catch (e) {
+  console.log('Storage модуль не загружен');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const steps = document.querySelectorAll('.form-step');
   const prevButton = document.querySelector('.btn-prev');
@@ -6,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const exitButton = document.querySelector('.btn-exit');
   let currentStep = 0;
   let hasUnsavedChanges = false;
-  // Pricing data and defaults
   const defaultConfig = { selects: {}, colors: {} };
   const prices = { selects: {}, colors: {}, base: 0 };
 
@@ -19,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const hideNext = currentStep === 0 || currentStep === steps.length - 1;
     nextButton.classList.toggle('hidden', hideNext);
     submitButton.classList.toggle('hidden', currentStep !== steps.length - 1);
-    // Show Exit only after leaving intro (>= step 1)
     if (exitButton) exitButton.classList.toggle('hidden', currentStep < 1);
   }
 
@@ -28,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
       stepElement.classList.toggle('active', index === step);
     });
     updateNavigation();
-    // If this is the last step, render the summary preview
     if (step === steps.length - 1) {
       renderSummary();
     }
@@ -48,10 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Initialize the first step
   showStep(currentStep);
 
-  // Handle start/exit on the intro step
   const startBtn = document.querySelector('.btn-start');
   if (startBtn) {
     startBtn.addEventListener('click', () => {
@@ -69,29 +73,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Handle constructor submit: save configuration to localStorage cart
   document.querySelector('.constructor-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     try {
       const item = buildCartItem();
+      console.log('Сохраняем котика:', item);
+      
       const key = 'cartItems';
       const existing = JSON.parse(localStorage.getItem(key) || '[]');
+      console.log('Существующие товары в корзине:', existing.length);
+      
+      item.id = 'item_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
       existing.push(item);
+      
       localStorage.setItem(key, JSON.stringify(existing));
       hasUnsavedChanges = false;
-      // Optional: navigate to basket
-      window.location.href = 'basket.html';
+      
+      console.log('Котик добавлен в корзину, всего товаров:', existing.length);
+      
+      showAddToCartNotification();
+      
+      setTimeout(() => {
+        if (confirm('Котик добавлен в корзину! Перейти в корзину для оформления заказа?')) {
+          window.location.href = 'basket.html';
+        }
+      }, 1500);
+      
     } catch (err) {
       console.error('Failed to save item to cart', err);
       alert('Не удалось сохранить в корзину. Попробуйте ещё раз.');
     }
   });
 
-  // Helper: safely add settings only if the select element exists
   const settings = {};
   function addSetting(key, selectSelector, optionMap) {
     const select = document.querySelector(selectSelector);
-    // Only bind to actual form <select> elements; avoid grabbing SVG nodes
     if (!select || select.tagName !== 'SELECT') return;
     const options = {};
     Object.keys(optionMap).forEach(optKey => {
@@ -136,9 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     striped: '#tailStriped',
   });
 
-  // Initialize defaultConfig and random prices for select options
   (function initPricesAndDefaults() {
-    // base price for the cat
     prices.base = randInt(3000, 10000);
 
     Object.keys(settings).forEach(key => {
@@ -146,7 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!s || !s.select) return;
       defaultConfig.selects[key] = s.select.value;
       prices.selects[key] = {};
-      // assign random price to each option value (guard if options missing)
       const opts = s.select && s.select.options ? Array.from(s.select.options) : [];
       opts.forEach(opt => {
         const val = opt.value;
@@ -154,22 +167,19 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // colors defaults and prices (per color input change)
     const colorInputs = ['#fur-color','#ears-color','#tail-color','#stripes-color','#belly-color','#paws-color','#tapochki-color','#nose-color'];
     colorInputs.forEach(sel => {
       const input = document.querySelector(sel);
       if (!input) return;
       defaultConfig.colors[sel.replace('#','')] = input.value;
-      prices.colors[sel.replace('#','')] = randInt(50, 400); // price for changing this color
+      prices.colors[sel.replace('#','')] = randInt(50, 400);
     });
   })();
 
-  // Render per-option price list under a select
   function renderOptionPrices(settingKey) {
     const setting = settings[settingKey];
     if (!setting || !setting.select) return;
     const select = setting.select;
-    // ensure container element exists
     let container = select.parentNode.querySelector('.option-price-list');
     if (!container) {
       container = document.createElement('div');
@@ -195,12 +205,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateSetting(settingKey, selectedValue) {
     const setting = settings[settingKey];
     if (!setting) return;
-    // Ensure we have a selectedValue; fallback to current select value
     if (selectedValue == null) {
       try { selectedValue = setting.select ? setting.select.value : selectedValue; } catch (e) {}
     }
 
-    // 1) Try using explicit mapped options (existing logic)
     const opts = Object.values(setting.options || {});
     if (opts.length > 0) {
       opts.forEach(option => {
@@ -213,7 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // 2) Fallback: hide all groups by class name matching the settingKey (e.g., '.ears', '.eyes')
     try {
       const groupEls = document.querySelectorAll('.' + settingKey);
       if (groupEls && groupEls.length) {
@@ -221,7 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } catch (e) {}
 
-    // 3) Attempt to find element by id pattern: settingKey + Capitalize(value)
     if (typeof selectedValue !== 'string') {
       console.debug(`updateSetting: invalid selectedValue for ${settingKey}`, selectedValue);
       return;
@@ -229,7 +235,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const cap = selectedValue.charAt(0).toUpperCase() + selectedValue.slice(1);
     let candidate = document.getElementById(settingKey + cap);
     if (!candidate) {
-      // try value + capitalized (e.g., 'tailLong' already covered, but try value capitalized alone)
       candidate = document.getElementById(selectedValue + cap);
     }
     if (candidate) {
@@ -237,7 +242,6 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // 4) If still not found, log for debugging
     console.debug(`updateSetting: unable to find target for ${settingKey} -> ${selectedValue}`);
   }
 
@@ -252,7 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
       hasUnsavedChanges = true;
     });
 
-    // create inline price element after select
     (function ensurePriceEl() {
       let el = setting.select.nextElementSibling;
       if (!el || !el.classList || !el.classList.contains('option-price')) {
@@ -262,15 +265,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     })();
 
-    // Initialize visibility for each setting and inline price
     updateSetting(settingKey, setting.select.value);
     updateInlinePrice(settingKey);
     renderOptionPrices(settingKey);
   });
 
-  // Render summary content into the final step
   function renderSummary() {
-    // Textual fields
     const mapText = (selector, targetId) => {
       const el = document.querySelector(selector);
       const out = document.getElementById(targetId);
@@ -287,7 +287,6 @@ document.addEventListener('DOMContentLoaded', () => {
     mapText('#tail', 'summary-tail');
     mapText('#tail-pattern', 'summary-tail-pattern');
 
-    // Colors
     const mapColor = (inputSelector, targetId) => {
       const input = document.querySelector(inputSelector);
       const out = document.getElementById(targetId);
@@ -313,7 +312,6 @@ document.addEventListener('DOMContentLoaded', () => {
     mapColor('#tapochki-color', 'summary-tapochkiColor');
     mapColor('#nose-color', 'summary-noseColor');
 
-    // SVG preview (clone current SVG)
     const preview = document.getElementById('summary-preview');
     const svg = document.querySelector('.cat-constructor');
     if (preview && svg) {
@@ -326,19 +324,16 @@ document.addEventListener('DOMContentLoaded', () => {
       preview.appendChild(clone);
     }
 
-    // Pricing: compute breakdown and total
     const breakdownEl = document.getElementById('price-breakdown');
     const totalEl = document.getElementById('summary-total');
     if (breakdownEl) breakdownEl.innerHTML = '';
     let total = prices.base;
-    // show base price
     if (breakdownEl) {
       const li = document.createElement('li');
       li.textContent = `Базовая цена кота: ${prices.base} ₽`;
       breakdownEl.appendChild(li);
     }
 
-    // check selects for deviations from defaults
     Object.keys(settings).forEach(key => {
       const s = settings[key];
       if (!s || !s.select) return;
@@ -356,7 +351,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // check colors
     const colorKeys = Object.keys(defaultConfig.colors);
     colorKeys.forEach(k => {
       const sel = `#${k}`;
@@ -381,7 +375,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Build a cart item JSON from current selections/colors and pricing
   function buildCartItem() {
     const selects = {};
     Object.keys(settings).forEach(key => {
@@ -398,7 +391,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (el) colors[id] = el.value;
       });
 
-    // Compute price total similarly to renderSummary
     let total = prices.base;
     const breakdown = [];
     breakdown.push({ label: 'Базовая цена кота', amount: prices.base });
@@ -424,22 +416,24 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Snapshot SVG as markup for preview in basket
     const svg = document.querySelector('.cat-constructor');
     const svgHtml = svg ? svg.outerHTML : '';
 
-    return {
-      id: Date.now(),
+    const item = {
+      id: 'item_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
       selects,
       colors,
       basePrice: prices.base,
       breakdown,
       total,
       svg: svgHtml,
+      createdAt: new Date().toISOString()
     };
+    
+    console.log('Создан товар для корзины:', item);
+    return item;
   }
 
-  // Utility: decide contrasting text color for swatches
   function getContrastingColor(hex) {
     if (!hex) return '#000';
     const c = hex.replace('#','');
@@ -450,7 +444,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return yiq >= 128 ? '#000' : '#fff';
   }
 
-  // ---------- Цвета: привязка инпутов цвета к частям SVG ----------
   const colorMappings = [
     { input: '#fur-color', targets: ['#body', '#bodyMain'] },
     { input: '#ears-color', targets: ['#earsNormal', '#earsTufted', '#earsFolded', '#earsNone'] },
@@ -477,9 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
       updateInlineColorPrice(input);
       hasUnsavedChanges = true;
     });
-    // initialize
     applyColor(input.value);
-    // ensure price span exists
     (function ensureColorPriceEl() {
       let el = input.nextElementSibling;
       if (!el || !el.classList || !el.classList.contains('option-price')) {
@@ -491,7 +482,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
   });
 
-  // Update inline price for select setting
   function updateInlinePrice(settingKey) {
     const setting = settings[settingKey];
     if (!setting || !setting.select) return;
@@ -505,10 +495,9 @@ document.addEventListener('DOMContentLoaded', () => {
     span.style.display = 'inline-block';
   }
 
-  // Update inline price for color input
   function updateInlineColorPrice(input) {
     if (!input) return;
-    const key = input.id; // e.g. 'fur-color'
+    const key = input.id;
     const def = defaultConfig.colors[key];
     const span = input.parentNode.querySelector('.option-price');
     if (!span) return;
@@ -517,7 +506,72 @@ document.addEventListener('DOMContentLoaded', () => {
     span.style.display = 'inline-block';
   }
 
-  // Поместить группы хвоста в начало SVG, чтобы хвост рендерился позади остальных элементов
+  function showAddToCartNotification() {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #4CAF50;
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: slideIn 0.3s ease-out;
+    `;
+    
+    notification.innerHTML = `
+      <span style="font-size: 1.5rem;">✓</span>
+      <div>
+        <strong>Котик добавлен в корзину!</strong><br>
+        <small>Перейдите в корзину для оформления заказа</small>
+      </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    if (!document.getElementById('cart-notification-styles')) {
+      const style = document.createElement('style');
+      style.id = 'cart-notification-styles';
+      style.textContent = `
+        @keyframes slideIn {
+          from {
+            transform: translateX(100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+        @keyframes slideOut {
+          from {
+            transform: translateX(0);
+            opacity: 1;
+          }
+          to {
+            transform: translateX(100%);
+            opacity: 0;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+    
+    setTimeout(() => {
+      notification.style.animation = 'slideOut 0.3s ease-out';
+      setTimeout(() => {
+        if (notification.parentNode) {
+          document.body.removeChild(notification);
+        }
+      }, 300);
+    }, 3000);
+  }
+
   (function moveTailToBack() {
     const svg = document.querySelector('.cat-constructor');
     if (!svg) return;
@@ -526,4 +580,19 @@ document.addEventListener('DOMContentLoaded', () => {
       if (node) svg.insertBefore(node, svg.firstChild);
     });
   })();
+  
+  window.debugCartData = function() {
+    console.log('=== ДЕБАГ ДАННЫХ КОРЗИНЫ ===');
+    const cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+    console.log('Товаров в корзине:', cartItems.length);
+    console.log('Все товары:', cartItems);
+    console.log('localStorage.cartItems:', localStorage.getItem('cartItems'));
+    
+    if (typeof Storage !== 'undefined') {
+      console.log('Storage доступен:', Storage);
+      console.log('Storage.getCurrentCart?', typeof Storage.getCurrentCart);
+    }
+    
+    return cartItems;
+  };
 });

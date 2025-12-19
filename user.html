@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="styles/style.css">
 	<link rel="stylesheet" href="styles/user.css">
   </head>
-  <body>
+  <body class="profile-page">
     <header class="main-header">
       <nav class="main-navigation">
         <a href="index.html"><img src="logo.png" alt="Наш логотип"></a>
         <ul>
-          <li class="menu-user"><a href="user.html" class="active">Профиль</a></li>
-          <li class="menu-basket"><a href="basket.html">В корзину</a></li>
+          <li><a href="user.html" class="active">Профиль</a></li>
+          <li><a href="basket.html">В корзину</a></li>
         </ul>
       </nav>
     </header>
@@ -21,61 +21,67 @@
     <main class="main-content">
       <h1 class="main-title">Ваш профиль</h1>
       <p class="main-description">
-        Добро пожаловать, <strong>Мяустр</strong>!  
+        Добро пожаловать, <strong id="user-greeting">Мяустр</strong>!  
         Здесь вы можете погладить данные своего аккаунта и узнать, сколько кисок уже мурчит у вас дома.
       </p>
 
-      <section class="user-info">
-        <h2 class="visually-hidden">Личная информация</h2>
-        <form class="user-form" action="#" method="post">
+      <!-- Сначала заказы -->
+      <section class="user-orders-section">
+        <h2>Ваши киски</h2>
+        <p>История заказов — пушистая летопись ваших предпочтений.</p>
+
+        <ul class="order-list" id="order-list">
+        </ul>
+      </section>
+
+      <section class="user-summary-section">
+        <h2>Ваши данные</h2>
+        <div class="user-summary">
+          <p><strong>Имя:</strong> <span id="user-name-summary">Загрузка...</span></p>
+          <p><strong>Email:</strong> <span id="user-email-summary">Загрузка...</span></p>
+          <p><strong>Телефон:</strong> <span id="user-phone-summary">Загрузка...</span></p>
+          <p><strong>Адрес доставки:</strong> <span id="user-address-summary">Загрузка...</span></p>
+        </div>
+      </section>
+
+      <section class="user-form-section">
+        <h2>Редактировать профиль</h2>
+        <form class="user-form" id="profile-form">
           <div class="form-field">
-            <label for="user-name">Имя</label>
-            <input type="text" id="user-name" name="userName" value="Мяустр" required>
+            <label for="profile-name">Имя</label>
+            <input type="text" id="profile-name" name="name" required>
           </div>
 
           <div class="form-field">
-            <label for="user-email">E-mail</label>
-            <input type="email" id="user-email" name="userEmail" value="meow@example.com" required>
+            <label for="profile-email">E-mail</label>
+            <input type="email" id="profile-email" name="email" required>
           </div>
 
           <div class="form-field">
-            <label for="user-phone">Телефон</label>
-            <input type="tel" id="user-phone" name="userPhone" value="+7 (900) 123-45-67">
+            <label for="profile-phone">Телефон</label>
+            <input type="tel" id="profile-phone" name="phone" placeholder="+7 (900) 123-45-67">
           </div>
 
           <div class="form-field">
-            <label for="user-address">Адрес доставки</label>
-            <textarea id="user-address" name="userAddress" rows="3" placeholder="Куда доставлять мурку?"></textarea>
+            <label for="profile-address">Адрес доставки</label>
+            <textarea id="profile-address" name="address" rows="3" placeholder="Город, улица, дом, квартира"></textarea>
+          </div>
+
+          <div class="form-field">
+            <label for="profile-password">Новый пароль (оставьте пустым, если не меняете)</label>
+            <input type="password" id="profile-password" name="password" placeholder="Минимум 6 символов" minlength="6">
+          </div>
+
+          <div class="form-field">
+            <label for="profile-password-confirm">Подтверждение нового пароля</label>
+            <input type="password" id="profile-password-confirm" name="passwordConfirm" placeholder="Повторите пароль" minlength="6">
           </div>
 
           <div class="user-actions">
             <button type="submit" class="btn-save">Сохранить изменения</button>
-            <button type="button" class="btn-logout">Выйти</button>
+            <button type="button" class="btn-logout" id="logout-btn-page">Выйти из аккаунта</button>
           </div>
         </form>
-      </section>
-
-      <section class="user-orders">
-        <h2>Ваши киски</h2>
-        <p>История заказов — пушистая летопись ваших предпочтений.</p>
-
-        <ul class="order-list">
-          <li class="order-item">
-            <img src="cats/custom-cat1.png" alt="Мурчелло">
-            <div>
-              <p><strong>Мурчелло</strong> — гордый и преданный.</p>
-              <p><small>Заказ от 15.09.2025 — Статус: доставлен</small></p>
-            </div>
-          </li>
-
-          <li class="order-item">
-            <img src="cats/custom-cat2.png" alt="Пушинка">
-            <div>
-              <p><strong>Пушинка</strong> — белоснежное воплощение мягкости.</p>
-              <p><small>Заказ от 25.09.2025 — Статус: в пути</small></p>
-            </div>
-          </li>
-        </ul>
       </section>
     </main>
 
@@ -99,6 +105,11 @@
         </ul>
       </div>
     </footer>
-	<script src="scripts/user.js"></script>
+
+	<script type="module" src="scripts/storage.js"></script>
+	<script type="module" src="scripts/auth.js"></script>
+	<script type="module" src="scripts/auth-modal.js"></script>
+	<script type="module" src="scripts/header-manager.js"></script>
+	<script type="module" src="scripts/user.js"></script>
   </body>
 </html>
