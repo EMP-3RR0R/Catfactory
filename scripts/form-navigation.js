@@ -78,27 +78,27 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const item = buildCartItem();
       console.log('Сохраняем котика:', item);
-      
+
       const key = 'cartItems';
       const existing = JSON.parse(localStorage.getItem(key) || '[]');
       console.log('Существующие товары в корзине:', existing.length);
-      
+
       item.id = 'item_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
       existing.push(item);
-      
+
       localStorage.setItem(key, JSON.stringify(existing));
       hasUnsavedChanges = false;
-      
+
       console.log('Котик добавлен в корзину, всего товаров:', existing.length);
-      
+
       showAddToCartNotification();
-      
+
       setTimeout(() => {
         if (confirm('Котик добавлен в корзину! Перейти в корзину для оформления заказа?')) {
           window.location.href = 'basket.html';
         }
       }, 1500);
-      
+
     } catch (err) {
       console.error('Failed to save item to cart', err);
       alert('Не удалось сохранить в корзину. Попробуйте ещё раз.');
