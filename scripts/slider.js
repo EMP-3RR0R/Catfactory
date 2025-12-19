@@ -1,15 +1,13 @@
-// Слайдер для карточек отзывов с правильной цикличностью
 document.addEventListener('DOMContentLoaded', function() {
   const container = document.querySelector('.reviews-container');
   const cards = document.querySelectorAll('.review-card');
   const prevBtn = document.querySelector('.arrow-left');
   const nextBtn = document.querySelector('.arrow-right');
   
-  const totalCards = cards.length; // 7
+  const totalCards = cards.length;
   let cardsPerView = 3;
-  let currentGroup = 0; // Группа 0 = карточки 0,1,2; группа 1 = 1,2,3 и т.д.
+  let currentStartIndex = 0;
   
-  // Определяем сколько карточек показывать
   function updateCardsPerView() {
     const width = window.innerWidth;
     
@@ -21,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
       cardsPerView = 3;
     }
     
-    // Обновляем CSS
     cards.forEach(card => {
       if (cardsPerView === 1) {
         card.style.flex = '0 0 100%';
@@ -35,86 +32,71 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
-    // При изменении размера сбрасываем на первую группу
-    currentGroup = 0;
-    showCurrentGroup();
+    showCurrentCards();
   }
   
-  // Показываем текущую группу
-  function showCurrentGroup() {
-    // Скрываем все
-    cards.forEach(card => card.classList.remove('active'));
+  function reorderCards(startIndex) {
+    cards.forEach(card => {
+      card.classList.remove('active');
+      card.style.order = '';
+    });
     
-    // Рассчитываем максимальное количество групп
-    const maxGroups = totalCards - cardsPerView + 1;
-    
-    // Нормализуем currentGroup
-    if (currentGroup < 0) currentGroup = maxGroups - 1;
-    if (currentGroup >= maxGroups) currentGroup = 0;
-    
-    console.log(`Группа ${currentGroup}: показываем карточки`);
-    
-    // Показываем карточки текущей группы
-    for (let i = 0; i < cardsPerView; i++) {
-      let cardIndex;
+    for (let i = 0; i < totalCards; i++) {
+      const cardIndex = (startIndex + i) % totalCards;
+      cards[cardIndex].style.order = i;
       
-      if (currentGroup < maxGroups - cardsPerView) {
-        // Обычный случай: группа внутри основных карточек
-        cardIndex = currentGroup + i;
-      } else {
-        // Циклический случай: вышли за пределы
-        cardIndex = (currentGroup + i) % totalCards;
+      if (i < cardsPerView) {
+        cards[cardIndex].classList.add('active');
       }
-      
-      console.log(`  - Карточка ${cardIndex + 1} (${cards[cardIndex].querySelector('.review-name').textContent})`);
-      cards[cardIndex].classList.add('active');
     }
   }
   
-  // Переход к следующей группе
+  function showCurrentCards() {
+    reorderCards(currentStartIndex);
+  }
+  
   function goToNext() {
-    const maxGroups = totalCards - cardsPerView + 1;
-    const cyclicGroups = cardsPerView; // Количество циклических групп
-    
-    if (currentGroup < maxGroups - 1) {
-      // Идем к следующей обычной группе
-      currentGroup++;
-    } else {
-      // Переходим к циклической группе или к началу
-      currentGroup = (currentGroup + 1) % maxGroups;
-    }
-    
-    console.log('--- ВПРАВО ---');
-    showCurrentGroup();
+    currentStartIndex = (currentStartIndex + 1) % totalCards;
+    showCurrentCards();
   }
   
-  // Переход к предыдущей группе
   function goToPrev() {
-    const maxGroups = totalCards - cardsPerView + 1;
-    
-    if (currentGroup > 0) {
-      // Идем к предыдущей обычной группе
-      currentGroup--;
-    } else {
-      // Переходим к последней группе (циклической)
-      currentGroup = maxGroups - 1;
-    }
-    
-    console.log('--- ВЛЕВО ---');
-    showCurrentGroup();
+    currentStartIndex = (currentStartIndex - 1 + totalCards) % totalCards;
+    showCurrentCards();
   }
   
-  // Инициализация
   function initSlider() {
-    // Показываем первую группу
-    showCurrentGroup();
+    showCurrentCards();
     
-    // Назначаем обработчики
     prevBtn.addEventListener('click', goToPrev);
     nextBtn.addEventListener('click', goToNext);
     
-    // Адаптивность
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    container.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    container.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+    
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      
+      if (touchEndX < touchStartX - swipeThreshold) {
+        goToNext();
+      }
+      
+      if (touchEndX > touchStartX + swipeThreshold) {
+        goToPrev();
+      }
+    }
+    
     window.addEventListener('resize', updateCardsPerView);
+    
     updateCardsPerView();
   }
   
