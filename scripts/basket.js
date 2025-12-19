@@ -113,6 +113,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const items = loadCart();
         items.splice(idx, 1);
         saveCart(items);
+
+        localStorage.setItem('cartItems', JSON.stringify(items));
+
+        // 2. Из нового формата (userCarts/guestCart)
+        if (typeof Storage !== 'undefined' && Storage.saveCurrentCart) {
+            Storage.saveCurrentCart(items);
+        }
+
         render();
       });
 
@@ -133,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
   clearBtn && clearBtn.addEventListener('click', () => {
     if (confirm('Очистить корзину?')) {
       CurrentStorage.clearCurrentCart();
+      localStorage.removeItem('cartItems');
       render();
     }
   });

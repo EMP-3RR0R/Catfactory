@@ -185,7 +185,7 @@ const Storage = {
           this.saveGuestCart(cartItems);
         }
         
-        localStorage.removeItem('cartItems');
+        // localStorage.removeItem('cartItems');
         console.log('Старая корзина успешно мигрирована');
       } catch (error) {
         console.error('Ошибка миграции корзины:', error);
