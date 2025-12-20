@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
       showStep(currentStep);
     });
   }
+  
   if (exitButton) {
     exitButton.addEventListener('click', () => {
       if (hasUnsavedChanges) {
@@ -147,11 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
     none: '#tailNone',
   });
 
-  addSetting('tailPattern', '#tail-pattern', {
-    plain: '#tailPlain',
-    striped: '#tailStriped',
-  });
-
   (function initPricesAndDefaults() {
     prices.base = randInt(3000, 10000);
 
@@ -167,7 +163,18 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    const colorInputs = ['#fur-color','#ears-color','#tail-color','#stripes-color','#belly-color','#paws-color','#tapochki-color','#nose-color'];
+    const colorInputs = [
+      '#fur-color',
+      '#head-color',
+      '#ears-color',
+      '#tail-color',
+      '#stripes-color',
+      '#belly-color',
+      '#paws-color',
+      '#tapochki-color',
+      '#nose-color'
+    ];
+    
     colorInputs.forEach(sel => {
       const input = document.querySelector(sel);
       if (!input) return;
@@ -285,7 +292,6 @@ document.addEventListener('DOMContentLoaded', () => {
     mapText('#nose', 'summary-nose');
     mapText('#mouth', 'summary-mouth');
     mapText('#tail', 'summary-tail');
-    mapText('#tail-pattern', 'summary-tail-pattern');
 
     const mapColor = (inputSelector, targetId) => {
       const input = document.querySelector(inputSelector);
@@ -304,6 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     mapColor('#fur-color', 'summary-furColor');
+    mapColor('#head-color', 'summary-headColor');
     mapColor('#ears-color', 'summary-earsColor');
     mapColor('#tail-color', 'summary-tailColor');
     mapColor('#stripes-color', 'summary-stripesColor');
@@ -353,8 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const colorKeys = Object.keys(defaultConfig.colors);
     colorKeys.forEach(k => {
-      const sel = `#${k}`;
-      const input = document.querySelector(sel);
+      const input = document.getElementById(k);
       if (!input) return;
       const def = defaultConfig.colors[k];
       if (input.value !== def) {
@@ -384,16 +390,27 @@ document.addEventListener('DOMContentLoaded', () => {
       const text = s.select.options[s.select.selectedIndex]?.text || val;
       selects[key] = { value: val, label: text };
     });
+    
     const colors = {};
-    ['fur-color','ears-color','tail-color','stripes-color','belly-color','paws-color','tapochki-color','nose-color']
-      .forEach(id => {
-        const el = document.getElementById(id);
-        if (el) colors[id] = el.value;
-      });
+    [
+      'fur-color',
+      'head-color',
+      'ears-color',
+      'tail-color',
+      'stripes-color',
+      'belly-color',
+      'paws-color',
+      'tapochki-color',
+      'nose-color'
+    ].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) colors[id] = el.value;
+    });
 
     let total = prices.base;
     const breakdown = [];
     breakdown.push({ label: 'Базовая цена кота', amount: prices.base });
+    
     Object.keys(settings).forEach(key => {
       const s = settings[key];
       if (!s || !s.select) return;
@@ -402,9 +419,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (cur !== def) {
         const extra = (prices.selects[key] && prices.selects[key][cur]) ? prices.selects[key][cur] : 0;
         total += extra;
-        breakdown.push({ label: `${s.select.options[s.select.selectedIndex].text} (${key})`, amount: extra });
+        breakdown.push({ 
+          label: `${s.select.options[s.select.selectedIndex].text} (${key})`, 
+          amount: extra 
+        });
       }
     });
+    
     Object.keys(defaultConfig.colors).forEach(k => {
       const input = document.getElementById(k);
       if (!input) return;
@@ -412,7 +433,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (input.value !== def) {
         const extra = prices.colors[k] || 0;
         total += extra;
-        breakdown.push({ label: `Изменён цвет ${k.replace('-',' ')}`, amount: extra });
+        breakdown.push({ 
+          label: `Изменён цвет ${k.replace('-',' ')}`, 
+          amount: extra 
+        });
       }
     });
 
@@ -446,9 +470,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const colorMappings = [
     { input: '#fur-color', targets: ['#body', '#bodyMain'] },
+    { input: '#head-color', targets: ['#head', '#headMain'] },
     { input: '#ears-color', targets: ['#earsNormal', '#earsTufted', '#earsFolded', '#earsNone'] },
     { input: '#tail-color', targets: ['#tailLong', '#tailShort', '#tailNone'] },
-    { input: '#stripes-color', targets: ['#stripes', '#stripe1Left', '#stripe2Left', '#stripe1Right', '#stripe2Right', '#tailStriped', '#tailStripe1', '#tailStripe2', '#tailStripe3'] },
+    { input: '#stripes-color', targets: ['#stripes', '#stripe1Left', '#stripe2Left', '#stripe1Right', '#stripe2Right'] },
     { input: '#belly-color', targets: ['#belly', '#bellyMain'] },
     { input: '#paws-color', targets: ['#backLeftPaw', '#backRightPaw', '#frontLeftPaw', '#frontRightPaw'] },
     { input: '#tapochki-color', targets: ['#backLeftTapochka', '#backRightTapochka', '#frontLeftTapochka', '#frontRightTapochka'] },
